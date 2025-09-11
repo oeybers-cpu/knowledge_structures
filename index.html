@@ -274,6 +274,7 @@
             transform-origin: left;
             transition: transform 0.5s ease;
             z-index: 1;
+            border-radius: 11.25px 11.25px 0 0;
         }
         .contact-card:hover {
             transform: translateY(-5px);
@@ -317,7 +318,6 @@
             position: relative;
             overflow: hidden;
             height: 100%;
-            min-height: 550px; /* Fixed height for consistent sizing */
         }
         .card::before {
             content: '';
@@ -331,6 +331,7 @@
             transform-origin: left;
             transition: transform 0.5s ease;
             z-index: 1;
+            border-radius: 12px 12px 0 0;
         }
         .card:hover {
             transform: translateY(-5px);
@@ -447,9 +448,9 @@
             margin-top: 40px;
         }
         .centered-card {
-            grid-column: 1 / -1;
             display: flex;
             justify-content: center;
+            margin-top: 20px;
         }
         .centered-card > .card {
             max-width: 700px;
@@ -879,7 +880,7 @@
             <div class="content-section">
                 <h2 class="section-title">Bernstein's Core Concepts</h2>
                 <div class="articles-container">
-                    <!-- Card 1: Vertical Knowledge (Top Left) - Includes Ladder Animation and Image -->
+                    <!-- Card 1: Vertical Knowledge (Top Left) - Includes Ladder Animation -->
                     <div class="card">
                         <div class="card__header">
                             <h2 class="card__title">
@@ -898,12 +899,9 @@
                             </div>
                             <!-- End of Ladder Animation -->
 
-                            <p>Bernstein's concept of vertical knowledge structures describes knowledge organised hierarchically, where concepts build systematically upon previous ones. This creates a cumulative, integrated framework typical in disciplines like physics or mathematics, where foundational principles underpin more complex theories. These structures allow for strong classification and framing, meaning boundaries between knowledge areas are clearly defined, and the rules for acquiring and using knowledge are explicit and consistent.</p>
+                            <p>Bernstein's concept of vertical knowledge structures describes knowledge organised hierarchically, where concepts build systematically upon previous ones. This creates a cumulative, integrated framework typical in disciplines like physics or mathematics, where foundational principles underpin more complex theories.</p>
 
-                            <!-- Image inserted between paragraphs in Top Left Card -->
-                            <img src="https://github.com/oeybers-cpu/knowledge_structures/blob/main/Vertical%20knowledge.png?raw=true" alt="Diagram of vertical knowledge structure" style="width: 100%; max-width: 400px; height: auto; margin: 15px auto; display: block; border-radius: 8px; border: 1px solid rgba(207, 64, 255, 0.3);">
-
-                            <p>Applying this to academic literacies, vertical structures correspond to disciplines where writing practices are highly codified and cumulative. Students learning within these structures must master specific genres and conventions that build upon each other. The academic literacies model helps reveal how these explicit rules (strong framing) shape the literacy practices students must learn, emphasising the epistemological demands and the specific ways of meaning-making required in these fields.</p>
+                            <p>Applying this to academic literacies, vertical structures correspond to disciplines where writing practices are highly codified and cumulative. Students must master specific genres and conventions that build upon each other. The academic literacies model helps reveal how explicit rules shape the literacy practices students must learn.</p>
                             <blockquote class="card__quote">
                                 <i class="fas fa-quote-left" aria-hidden="true"></i> In vertical structures, knowledge is cumulative, building upon itself in a coherent, integrated way.
                             </blockquote>
@@ -919,7 +917,7 @@
                         </footer>
                     </div>
 
-                    <!-- Card 2: Horizontal Knowledge (Top Right) - Includes Updated Sunrise Animation and Image -->
+                    <!-- Card 2: Horizontal Knowledge (Top Right) - Includes Updated Sunrise Animation -->
                     <div class="card">
                         <div class="card__header">
                             <h2 class="card__title">
@@ -938,12 +936,9 @@
                             </div>
                             <!-- End of Updated Sunrise Animation -->
 
-                            <p>Bernstein's horizontal knowledge structures are segmented, consisting of distinct, often unrelated approaches or languages within a field. These lack a single integrating framework, leading to weaker classification and framing. Boundaries between knowledge areas are less defined, and the rules for acquiring and using knowledge can be more ambiguous or context-dependent. This is typical in fields like the humanities, where different theories (e.g., Marxist, feminist, postcolonial) coexist without a unifying principle.</p>
+                            <p>Bernstein's horizontal knowledge structures are segmented, consisting of distinct, often unrelated approaches or languages within a field. These lack a single integrating framework, leading to weaker classification and framing. This is typical in fields like the humanities.</p>
 
-                            <!-- Image inserted between paragraphs in Top Right Card -->
-                            <img src="https://github.com/oeybers-cpu/knowledge_structures/raw/main/jpeg%20%20(9).jpg" alt="Diagram of horizontal knowledge structure" style="width: 100%; max-width: 400px; height: auto; margin: 15px auto; display: block; border-radius: 8px; border: 1px solid rgba(207, 64, 255, 0.3);">
-
-                            <p>The academic literacies model is particularly valuable for understanding horizontal structures. It highlights how students must navigate diverse, often competing genres and discourses within these fields. The model emphasises the situated nature of literacy practices, where meaning, identity, and power are negotiated differently in each segmented area. Rather than a single, correct way to write or argue, students must learn to adapt their literacy practices to the specific, often context-dependent rules (weaker framing) of each segment.</p>
+                            <p>The academic literacies model is particularly valuable for understanding horizontal structures. It highlights how students must navigate diverse, often competing genres and discourses within these fields. The model emphasises the situated nature of literacy practices, where meaning, identity, and power are negotiated differently in each segment.</p>
                             <blockquote class="card__quote">
                                 <i class="fas fa-quote-left" aria-hidden="true"></i> In horizontal structures, knowledge areas exist side-by-side, often incommensurable with each other.
                             </blockquote>
@@ -975,8 +970,8 @@
                             <img src="https://github.com/oeybers-cpu/a_lit_models/blob/main/al%20class.png?raw=true"
                                  alt="Students switching between different communication modes in classroom setting"
                                  class="card__image">
-                            <p>Bernstein's framework helps us understand the complexity of student experience in navigating academic literacies. The requirement to switch between genres (e.g., from discussion notes to essays) and modes (e.g., from speech to writing) reflects the underlying structure of the knowledge domain. In vertical structures, these transitions often involve applying learned principles in new, but related, contexts. In horizontal structures, the transitions can be more abrupt, moving between fundamentally different ways of thinking and writing.</p>
-                            <p>The academic literacies model, drawing on New Literacy Studies, emphasises that these shifts are not merely technical. Each genre and mode embodies different social meanings, identities, and power relations. Students must learn not just the forms, but the social practices embedded within them. Understanding this through a Bernsteinian lens reveals how the classification and framing of the underlying knowledge influences the difficulty and nature of these literacy transitions. Explicit pedagogy that makes these demands visible is crucial.</p>
+                            <p>Bernstein's framework helps us understand the complexity of student experience in navigating academic literacies. The requirement to switch between genres and modes reflects the underlying structure of the knowledge domain.</p>
+                            <p>The academic literacies model emphasises that these shifts are not merely technical. Each genre and mode embodies different social meanings, identities, and power relations. Students must learn not just the forms, but the social practices embedded within them.</p>
                             <blockquote class="card__quote">
                                 <i class="fas fa-quote-left" aria-hidden="true"></i> Students must develop awareness of the different qualities associated with various genres and modes as they move between communication contexts in academic work.
                             </blockquote>
@@ -1000,15 +995,12 @@
                             </h2>
                         </div>
                         <div class="card__body">
-                            <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/digital_communication_africa.png?raw=true"
-                                 alt="Educators applying academic literacies principles in curriculum design"
+                            <img src="https://github.com/oeybers-cpu/knowledge_structures/blob/main/genres4.png?raw=true" 
+                                 alt="Illustration of different academic genres" 
                                  class="card__image">
-                            <p>Bernstein's concepts are crucial for curriculum design and pedagogy. Recognising whether a subject area is predominantly vertical or horizontal helps educators anticipate the literacy challenges students will face. In vertical disciplines, pedagogy might focus on building a strong foundation in core genres and the explicit rules for knowledge construction. In horizontal disciplines, pedagogy must help students understand and navigate the diversity of available discourses and the contexts in which each is appropriate.</p>
+                            <p>Bernstein's concepts are crucial for curriculum design and pedagogy. Recognising whether a subject area is predominantly vertical or horizontal helps educators anticipate the literacy challenges students will face.</p>
 
-                            <!-- Embedded image after the 2nd paragraph -->
-                            <img src="https://github.com/oeybers-cpu/knowledge_structures/blob/main/genres4.png?raw=true" alt="Illustration of different academic genres" style="width: 100%; max-width: 500px; height: auto; margin: 15px auto; display: block; border-radius: 8px; border: 1px solid rgba(207, 64, 255, 0.3);">
-
-                            <p>Lea and Street's academic literacies model operationalises this by advocating for a 'design frame' that makes the social and epistemological nature of academic tasks explicit. This aligns with Bernstein's call for pedagogic discourse that recontextualises knowledge for learners. By understanding the underlying knowledge structure (vertical/horizontal), educators can better design learning experiences that help students understand not just *what* to write, but *why* certain forms are privileged and how they relate to broader social and disciplinary practices. This moves beyond deficit models to a more nuanced understanding of student learning.</p>
+                            <p>Lea and Street's academic literacies model operationalises this by advocating for a 'design frame' that makes the social and epistemological nature of academic tasks explicit. This moves beyond deficit models to a more nuanced understanding of student learning.</p>
                             <blockquote class="card__quote">
                                 <i class="fas fa-quote-left" aria-hidden="true"></i> Treating such students as collaborators in the development of the academic literacies necessary... can perhaps offer a different and more supportive route.
                             </blockquote>
@@ -1038,8 +1030,8 @@
                         <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/digital_communication_africa.png?raw=true"
                              alt="Multimodal communication showing integration of different semiotic resources"
                              class="card__image">
-                        <p>In academic settings, meaning is rarely constructed through language alone. The academic literacies model recognises that students engage with and produce texts that combine linguistic, visual, gestural, and spatial elements. This multimodal approach allows for a richer, more complex representation of ideas and arguments.</p>
-                        <p>For instance, a student might use a combination of words, graphs, charts, images, and diagrams in a research report. A presentation might integrate spoken language, slide layouts, animations, and gestures. Understanding the interplay between these different modes is essential for effective academic communication. The model encourages teachers to explicitly teach students how to use these multimodal resources to construct coherent and persuasive arguments.</p>
+                        <p>In academic settings, meaning is rarely constructed through language alone. The academic literacies model recognises that students engage with and produce texts that combine linguistic, visual, gestural, and spatial elements.</p>
+                        <p>For instance, a student might use a combination of words, graphs, charts, images, and diagrams in a research report. Understanding the interplay between these different modes is essential for effective academic communication.</p>
                         <blockquote class="card__quote">
                             <i class="fas fa-quote-left" aria-hidden="true"></i> Academic literacy is enriched when we recognise and value diverse knowledge traditions and communication practices across cultural contexts.
                         </blockquote>
@@ -1128,3 +1120,4 @@
     </script>
 </body>
 </html>
+and no duplicate images.
