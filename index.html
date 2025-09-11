@@ -205,7 +205,8 @@
             position: relative;
             z-index: 2;
             box-shadow: 0 0 30px 12px var(--sun-glow);
-            animation: sun-pulse 8s infinite ease-in-out;
+            /* Updated animation to rise and set */
+            animation: sun-rise-set 20s infinite ease-in-out;
         }
         .sun-rays {
             position: absolute;
@@ -218,13 +219,19 @@
             background: repeating-conic-gradient(from 0deg, var(--sun-ray-color) 0deg 3deg, transparent 3deg 20deg);
             border-radius: 50%;
             opacity: 0.8;
+            /* Updated animation to rotate and pulse */
             animation: ray-rotate 20s infinite linear, ray-pulse 4s infinite ease-in-out;
             box-shadow: 0 0 20px 6px var(--sun-ray-color);
         }
-        @keyframes sun-pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        /* Updated sun animation: rise, pause at top, set, pause at bottom */
+        @keyframes sun-rise-set {
+            0% { transform: translate(-50%, 50%) scale(0.8); opacity: 0.7; }
+            10% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            40% { transform: translate(-50%, -50%) scale(1); opacity: 1; } /* Pause at top */
+            50% { transform: translate(-50%, 50%) scale(1); opacity: 1; }
+            60% { transform: translate(-50%, 50%) scale(1); opacity: 1; } /* Pause at bottom */
+            70% { transform: translate(-50%, 50%) scale(0.8); opacity: 0.7; }
+            100% { transform: translate(-50%, 50%) scale(0.8); opacity: 0.7; }
         }
         @keyframes ray-rotate {
             0% { transform: translate(-50%, -50%) rotate(0deg); }
@@ -496,7 +503,7 @@
             }
         }
 
-        /* Sunrise Animation Styles (Updated with more stars and elevated horizon) */
+        /* Sunrise Animation Styles (Updated with more stars, sun rise/set, and stars emerging from sun) */
         .sunrise-scene {
             position: relative;
             width: 100%;
@@ -526,7 +533,8 @@
             height: 60px; /* Adjusted size */
             background: linear-gradient(to bottom, #ffd700, #ff8c00);
             border-radius: 50%;
-            animation: rise 10s ease-in-out forwards;
+            /* Updated animation to rise and set */
+            animation: sun-rise-set-card 20s infinite ease-in-out;
             filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
             z-index: 2; /* Sun above stars */
         }
@@ -538,7 +546,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            animation: rise 10s ease-in-out forwards; /* Same animation as the sun */
+            /* Updated animation to rise and set with the sun */
+            animation: sun-rise-set-card 20s infinite ease-in-out;
             z-index: 0; /* Stars below the sun and horizon */
         }
 
@@ -551,6 +560,7 @@
             border-radius: 50%;
             /* Place stars along the path of the rising sun and to the sides */
             /* Increased number of stars by ~1000% using multiple box-shadow layers */
+            /* Added more stars to the right side */
             box-shadow:
                 /* Original layer */
                 -20px 10px 0 0px #ffffff,
@@ -634,73 +644,80 @@
                 135px 65px 0 0px #cccccc,
                 155px 75px 0 0px #ffffff,
                 175px 85px 0 0px #dddddd,
-                195px 95px 0 0px #bbbbbb;
+                195px 95px 0 0px #bbbbbb,
+                /* Additional stars for the right side */
+                220px 5px 0 0px #ffffff,
+                240px 15px 0 0px #cccccc,
+                260px 25px 0 0px #dddddd,
+                280px 35px 0 0px #bbbbbb,
+                300px 45px 0 0px #eeeeee,
+                320px 55px 0 0px #dddddd,
+                340px 65px 0 0px #cccccc,
+                360px 75px 0 0px #ffffff,
+                380px 85px 0 0px #dddddd,
+                400px 95px 0 0px #bbbbbb,
+                225px 20px 0 0px #aaffaa,
+                245px 30px 0 0px #8888ff,
+                265px 40px 0 0px #ff88ff,
+                285px 50px 0 0px #ffff88,
+                305px 60px 0 0px #88ffff,
+                325px 70px 0 0px #ff8888,
+                345px 80px 0 0px #aaffaa,
+                365px 90px 0 0px #8888ff,
+                385px 100px 0 0px #ff88ff,
+                405px 110px 0 0px #ffff88,
+                230px 35px 0 0px #88ffff,
+                250px 45px 0 0px #ff8888,
+                270px 55px 0 0px #aaffaa,
+                290px 65px 0 0px #8888ff,
+                310px 75px 0 0px #ff88ff,
+                330px 85px 0 0px #ffff88,
+                350px 95px 0 0px #88ffff,
+                370px 105px 0 0px #ff8888,
+                390px 115px 0 0px #aaffaa,
+                410px 125px 0 0px #8888ff;
             /* Optional subtle twinkle effect */
             /* animation: twinkle 3s infinite alternate; */ /* Uncomment to enable twinkling */
         }
 
-        @keyframes rise {
-            0% {
-                bottom: -50px; /* Sun starts below */
-                transform: translateY(0); /* Stars start at top */
+        /* Updated animation for sun and stars in the card */
+        @keyframes sun-rise-set-card {
+            0% { 
+                bottom: -50px; /* Start below */
+                transform: translateX(-50%) scale(0.8); 
+                opacity: 0.7; 
             }
-            100% {
-                bottom: 90px; /* Final sun position (adjusted for elevated horizon) */
-                transform: translateY(-100px); /* Stars move up, parallel to horizon */
+            10% { 
+                bottom: 90px; /* Rise to horizon level (adjusted for elevated horizon) */
+                transform: translateX(-50%) scale(1); 
+                opacity: 1; 
+            }
+            40% { 
+                bottom: 90px; /* Pause at horizon */
+                transform: translateX(-50%) scale(1); 
+                opacity: 1; 
+            }
+            50% { 
+                bottom: -50px; /* Set below */
+                transform: translateX(-50%) scale(1); 
+                opacity: 1; 
+            }
+            60% { 
+                bottom: -50px; /* Pause below */
+                transform: translateX(-50%) scale(1); 
+                opacity: 1; 
+            }
+            70% { 
+                bottom: -50px; /* Continue below */
+                transform: translateX(-50%) scale(0.8); 
+                opacity: 0.7; 
+            }
+            100% { 
+                bottom: -50px; /* End below */
+                transform: translateX(-50%) scale(0.8); 
+                opacity: 0.7; 
             }
         }
-
-        /* Optional: Twinkle animation for stars */
-        /* @keyframes twinkle {
-            0% {
-                opacity: 0.7;
-                box-shadow:
-                -20px 10px 0 0px #ffffff80,
-                -40px 20px 0 0px #cccccc80,
-                -60px 30px 0 0px #dddddd80,
-                -80px 40px 0 0px #bbbbbb80,
-                -100px 50px 0 0px #eeeeee80,
-                -120px 60px 0 0px #dddddd80,
-                -140px 70px 0 0px #cccccc80,
-                -160px 80px 0 0px #ffffff80,
-                -180px 90px 0 0px #dddddd80,
-                -200px 100px 0 0px #bbbbbb80,
-                20px 10px 0 0px #eeeeee80,
-                40px 20px 0 0px #cccccc80,
-                60px 30px 0 0px #ffffff80,
-                80px 40px 0 0px #dddddd80,
-                100px 50px 0 0px #bbbbbb80,
-                120px 60px 0 0px #eeeeee80,
-                140px 70px 0 0px #cccccc80,
-                160px 80px 0 0px #ffffff80,
-                180px 90px 0 0px #dddddd80,
-                200px 100px 0 0px #bbbbbb80;
-            }
-            100% {
-                opacity: 1;
-                 box-shadow:
-                -20px 10px 0 0px #ffffff,
-                -40px 20px 0 0px #cccccc,
-                -60px 30px 0 0px #dddddd,
-                -80px 40px 0 0px #bbbbbb,
-                -100px 50px 0 0px #eeeeee,
-                -120px 60px 0 0px #dddddd,
-                -140px 70px 0 0px #cccccc,
-                -160px 80px 0 0px #ffffff,
-                -180px 90px 0 0px #dddddd,
-                -200px 100px 0 0px #bbbbbb,
-                20px 10px 0 0px #eeeeee,
-                40px 20px 0 0px #cccccc,
-                60px 30px 0 0px #ffffff,
-                80px 40px 0 0px #dddddd,
-                100px 50px 0 0px #bbbbbb,
-                120px 60px 0 0px #eeeeee,
-                140px 70px 0 0px #cccccc,
-                160px 80px 0 0px #ffffff,
-                180px 90px 0 0px #dddddd,
-                200px 100px 0 0px #bbbbbb;
-            }
-        } */
 
         .sunrise-caption {
             position: absolute;
@@ -864,7 +881,7 @@
             <div class="content-section">
                 <h2 class="section-title">Bernstein's Core Concepts</h2>
                 <div class="articles-container">
-                    <!-- Card 1: Vertical Knowledge (Top Left) - Includes Image -->
+                    <!-- Card 1: Vertical Knowledge (Top Left) - Includes Ladder Animation and Image -->
                     <div class="card">
                         <div class="card__header">
                             <h2 class="card__title">
@@ -872,11 +889,22 @@
                             </h2>
                         </div>
                         <div class="card__body">
-                            <!-- Image for Vertical Knowledge Card -->
-                            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&h=200&q=80"
-                                 alt="Hierarchical structure like a pyramid or building blocks stacking up"
-                                 class="card__image">
+                            <!-- Ladder Animation in Top Left Card -->
+                            <div style="position: relative; width: 100%; height: 220px; background-color: #000; border-radius: 8px; margin-bottom: 15px; border: 2px solid rgba(207, 64, 255, 0.3); overflow: hidden;">
+                                <div class="ladder-container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 180px;">
+                                    <div class="ladder-rungs"></div>
+                                </div>
+                                <div style="position: absolute; top: 5px; width: 100%; text-align: center; color: #ddd; font-size: 0.75rem; padding: 2px 5px; box-sizing: border-box; background-color: #000; z-index: 3;">
+                                    Ladder representing cumulative, hierarchical knowledge structure.
+                                </div>
+                            </div>
+                            <!-- End of Ladder Animation -->
+
                             <p>Bernstein's concept of vertical knowledge structures describes knowledge organised hierarchically, where concepts build systematically upon previous ones. This creates a cumulative, integrated framework typical in disciplines like physics or mathematics, where foundational principles underpin more complex theories. These structures allow for strong classification and framing, meaning boundaries between knowledge areas are clearly defined, and the rules for acquiring and using knowledge are explicit and consistent.</p>
+                            
+                            <!-- Image inserted between paragraphs -->
+                            <img src="https://github.com/oeybers-cpu/knowledge_structures/blob/main/jpeg%20%20(9).jpg?raw=true" alt="Diagram of vertical knowledge structure" style="width: 100%; max-width: 400px; height: auto; margin: 15px auto; display: block; border-radius: 8px; border: 1px solid rgba(207, 64, 255, 0.3);">
+
                             <p>Applying this to academic literacies, vertical structures correspond to disciplines where writing practices are highly codified and cumulative. Students learning within these structures must master specific genres and conventions that build upon each other. The academic literacies model helps reveal how these explicit rules (strong framing) shape the literacy practices students must learn, emphasising the epistemological demands and the specific ways of meaning-making required in these fields.</p>
                             <blockquote class="card__quote">
                                 <i class="fas fa-quote-left" aria-hidden="true"></i> In vertical structures, knowledge is cumulative, building upon itself in a coherent, integrated way.
@@ -893,7 +921,7 @@
                         </footer>
                     </div>
 
-                    <!-- Card 2: Horizontal Knowledge (Top Right) - Includes Sunrise Animation -->
+                    <!-- Card 2: Horizontal Knowledge (Top Right) - Includes Updated Sunrise Animation -->
                     <div class="card">
                         <div class="card__header">
                             <h2 class="card__title">
@@ -901,7 +929,7 @@
                             </h2>
                         </div>
                         <div class="card__body">
-                            <!-- Sunrise Animation with Stars in Top Right Card -->
+                            <!-- Updated Sunrise Animation with Stars in Top Right Card -->
                             <div class="sunrise-scene">
                                 <div class="stars-container">
                                     <div class="star"></div>
@@ -910,7 +938,7 @@
                                 <div class="sunrise-horizon"></div>
                                 <div class="sunrise-caption">Sunrise representing diverse, segmented knowledge structure.</div>
                             </div>
-                            <!-- End of Sunrise Animation -->
+                            <!-- End of Updated Sunrise Animation -->
 
                             <p>Bernstein's horizontal knowledge structures are segmented, consisting of distinct, often unrelated approaches or languages within a field. These lack a single integrating framework, leading to weaker classification and framing. Boundaries between knowledge areas are less defined, and the rules for acquiring and using knowledge can be more ambiguous or context-dependent. This is typical in fields like the humanities, where different theories (e.g., Marxist, feminist, postcolonial) coexist without a unifying principle.</p>
                             <p>The academic literacies model is particularly valuable for understanding horizontal structures. It highlights how students must navigate diverse, often competing genres and discourses within these fields. The model emphasises the situated nature of literacy practices, where meaning, identity, and power are negotiated differently in each segmented area. Rather than a single, correct way to write or argue, students must learn to adapt their literacy practices to the specific, often context-dependent rules (weaker framing) of each segment.</p>
