@@ -496,7 +496,7 @@
             }
         }
 
-        /* Sunrise Animation Styles (Updated with Stars) */
+        /* Sunrise Animation Styles (Updated with more stars and elevated horizon) */
         .sunrise-scene {
             position: relative;
             width: 100%;
@@ -509,12 +509,13 @@
         }
         .sunrise-horizon {
             position: absolute;
-            bottom: 0;
+            /* Elevate the horizon slightly */
+            bottom: 10px; /* Changed from 0px to 10px */
             width: 100%;
             height: 2px;
             background-color: #fff;
             box-shadow: 0 0 15px 5px #fff;
-            z-index: 1; /* Ensure horizon is above the sun */
+            z-index: 1; /* Ensure horizon is above the sun and stars */
         }
         .sunrise-sun {
             position: absolute;
@@ -538,7 +539,7 @@
             width: 100%;
             height: 100%;
             animation: rise 10s ease-in-out forwards; /* Same animation as the sun */
-            z-index: 1; /* Stars below the sun and horizon */
+            z-index: 0; /* Stars below the sun and horizon */
         }
 
         /* Individual stars - using box-shadow for multiple stars */
@@ -548,9 +549,10 @@
             height: 2px;
             background-color: #ffffff; /* Base star color */
             border-radius: 50%;
-            /* Place stars along the path of the rising sun */
-            /* Multiple stars created via box-shadow */
+            /* Place stars along the path of the rising sun and to the sides */
+            /* Increased number of stars by ~1000% using multiple box-shadow layers */
             box-shadow:
+                /* Original layer */
                 -20px 10px 0 0px #ffffff,
                 -40px 20px 0 0px #cccccc,
                 -60px 30px 0 0px #dddddd,
@@ -570,7 +572,69 @@
                 140px 70px 0 0px #cccccc,
                 160px 80px 0 0px #ffffff,
                 180px 90px 0 0px #dddddd,
-                200px 100px 0 0px #bbbbbb;
+                200px 100px 0 0px #bbbbbb,
+                /* New layers to increase star count */
+                -25px 15px 0 0px #aaffaa,
+                -45px 25px 0 0px #8888ff,
+                -65px 35px 0 0px #ff88ff,
+                -85px 45px 0 0px #ffff88,
+                -105px 55px 0 0px #88ffff,
+                -125px 65px 0 0px #ff8888,
+                -145px 75px 0 0px #aaffaa,
+                -165px 85px 0 0px #8888ff,
+                -185px 95px 0 0px #ff88ff,
+                -205px 105px 0 0px #ffff88,
+                25px 15px 0 0px #88ffff,
+                45px 25px 0 0px #ff8888,
+                65px 35px 0 0px #aaffaa,
+                85px 45px 0 0px #8888ff,
+                105px 55px 0 0px #ff88ff,
+                125px 65px 0 0px #ffff88,
+                145px 75px 0 0px #88ffff,
+                165px 85px 0 0px #ff8888,
+                185px 95px 0 0px #aaffaa,
+                205px 105px 0 0px #8888ff,
+                -30px 20px 0 0px #ff88ff,
+                -50px 30px 0 0px #ffff88,
+                -70px 40px 0 0px #88ffff,
+                -90px 50px 0 0px #ff8888,
+                -110px 60px 0 0px #aaffaa,
+                -130px 70px 0 0px #8888ff,
+                -150px 80px 0 0px #ff88ff,
+                -170px 90px 0 0px #ffff88,
+                -190px 100px 0 0px #88ffff,
+                -210px 110px 0 0px #ff8888,
+                30px 20px 0 0px #aaffaa,
+                50px 30px 0 0px #8888ff,
+                70px 40px 0 0px #ff88ff,
+                90px 50px 0 0px #ffff88,
+                110px 60px 0 0px #88ffff,
+                130px 70px 0 0px #ff8888,
+                150px 80px 0 0px #aaffaa,
+                170px 90px 0 0px #8888ff,
+                190px 100px 0 0px #ff88ff,
+                210px 110px 0 0px #ffff88,
+                /* Even more stars */
+                -15px 5px 0 0px #ffffff,
+                -35px 15px 0 0px #cccccc,
+                -55px 25px 0 0px #dddddd,
+                -75px 35px 0 0px #bbbbbb,
+                -95px 45px 0 0px #eeeeee,
+                -115px 55px 0 0px #dddddd,
+                -135px 65px 0 0px #cccccc,
+                -155px 75px 0 0px #ffffff,
+                -175px 85px 0 0px #dddddd,
+                -195px 95px 0 0px #bbbbbb,
+                15px 5px 0 0px #eeeeee,
+                35px 15px 0 0px #cccccc,
+                55px 25px 0 0px #ffffff,
+                75px 35px 0 0px #dddddd,
+                95px 45px 0 0px #bbbbbb,
+                115px 55px 0 0px #eeeeee,
+                135px 65px 0 0px #cccccc,
+                155px 75px 0 0px #ffffff,
+                175px 85px 0 0px #dddddd,
+                195px 95px 0 0px #bbbbbb;
             /* Optional subtle twinkle effect */
             /* animation: twinkle 3s infinite alternate; */ /* Uncomment to enable twinkling */
         }
@@ -581,7 +645,7 @@
                 transform: translateY(0); /* Stars start at top */
             }
             100% {
-                bottom: 80px; /* Final sun position */
+                bottom: 90px; /* Final sun position (adjusted for elevated horizon) */
                 transform: translateY(-100px); /* Stars move up, parallel to horizon */
             }
         }
@@ -800,7 +864,7 @@
             <div class="content-section">
                 <h2 class="section-title">Bernstein's Core Concepts</h2>
                 <div class="articles-container">
-                    <!-- Card 1: Vertical Knowledge (Top Left) -->
+                    <!-- Card 1: Vertical Knowledge (Top Left) - Includes Image -->
                     <div class="card">
                         <div class="card__header">
                             <h2 class="card__title">
@@ -808,17 +872,10 @@
                             </h2>
                         </div>
                         <div class="card__body">
-                            <!-- Ladder Animation in Top Left Card -->
-                            <div style="position: relative; width: 100%; height: 220px; background-color: #000; border-radius: 8px; margin-bottom: 15px; border: 2px solid rgba(207, 64, 255, 0.3); overflow: hidden;">
-                                <div class="ladder-container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 180px;">
-                                    <div class="ladder-rungs"></div>
-                                </div>
-                                <div style="position: absolute; top: 5px; width: 100%; text-align: center; color: #ddd; font-size: 0.75rem; padding: 2px 5px; box-sizing: border-box; background-color: #000; z-index: 3;">
-                                    Ladder representing cumulative, hierarchical knowledge structure.
-                                </div>
-                            </div>
-                            <!-- End of Ladder Animation -->
-
+                            <!-- Image for Vertical Knowledge Card -->
+                            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&h=200&q=80"
+                                 alt="Hierarchical structure like a pyramid or building blocks stacking up"
+                                 class="card__image">
                             <p>Bernstein's concept of vertical knowledge structures describes knowledge organised hierarchically, where concepts build systematically upon previous ones. This creates a cumulative, integrated framework typical in disciplines like physics or mathematics, where foundational principles underpin more complex theories. These structures allow for strong classification and framing, meaning boundaries between knowledge areas are clearly defined, and the rules for acquiring and using knowledge are explicit and consistent.</p>
                             <p>Applying this to academic literacies, vertical structures correspond to disciplines where writing practices are highly codified and cumulative. Students learning within these structures must master specific genres and conventions that build upon each other. The academic literacies model helps reveal how these explicit rules (strong framing) shape the literacy practices students must learn, emphasising the epistemological demands and the specific ways of meaning-making required in these fields.</p>
                             <blockquote class="card__quote">
@@ -836,7 +893,7 @@
                         </footer>
                     </div>
 
-                    <!-- Card 2: Horizontal Knowledge (Top Right) -->
+                    <!-- Card 2: Horizontal Knowledge (Top Right) - Includes Sunrise Animation -->
                     <div class="card">
                         <div class="card__header">
                             <h2 class="card__title">
