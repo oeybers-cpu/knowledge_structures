@@ -496,13 +496,13 @@
             }
         }
 
-        /* Sunrise Animation Styles */
+        /* Sunrise Animation Styles (Updated with Stars) */
         .sunrise-scene {
             position: relative;
             width: 100%;
             height: 220px; /* Match card image height */
             overflow: hidden;
-            background: linear-gradient(to top, #4a007f, #000);
+            background: linear-gradient(to top, #1a0033, #000); /* Deeper space background */
             border-radius: 8px;
             margin-bottom: 15px;
             border: 2px solid rgba(207, 64, 255, 0.3);
@@ -527,15 +527,117 @@
             border-radius: 50%;
             animation: rise 10s ease-in-out forwards;
             filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+            z-index: 2; /* Sun above stars */
         }
+
+        /* Stars container */
+        .stars-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            animation: rise 10s ease-in-out forwards; /* Same animation as the sun */
+            z-index: 1; /* Stars below the sun and horizon */
+        }
+
+        /* Individual stars - using box-shadow for multiple stars */
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: #ffffff; /* Base star color */
+            border-radius: 50%;
+            /* Place stars along the path of the rising sun */
+            /* Multiple stars created via box-shadow */
+            box-shadow:
+                -20px 10px 0 0px #ffffff,
+                -40px 20px 0 0px #cccccc,
+                -60px 30px 0 0px #dddddd,
+                -80px 40px 0 0px #bbbbbb,
+                -100px 50px 0 0px #eeeeee,
+                -120px 60px 0 0px #dddddd,
+                -140px 70px 0 0px #cccccc,
+                -160px 80px 0 0px #ffffff,
+                -180px 90px 0 0px #dddddd,
+                -200px 100px 0 0px #bbbbbb,
+                20px 10px 0 0px #eeeeee,
+                40px 20px 0 0px #cccccc,
+                60px 30px 0 0px #ffffff,
+                80px 40px 0 0px #dddddd,
+                100px 50px 0 0px #bbbbbb,
+                120px 60px 0 0px #eeeeee,
+                140px 70px 0 0px #cccccc,
+                160px 80px 0 0px #ffffff,
+                180px 90px 0 0px #dddddd,
+                200px 100px 0 0px #bbbbbb;
+            /* Optional subtle twinkle effect */
+            /* animation: twinkle 3s infinite alternate; */ /* Uncomment to enable twinkling */
+        }
+
         @keyframes rise {
             0% {
-                bottom: -50px;
+                bottom: -50px; /* Sun starts below */
+                transform: translateY(0); /* Stars start at top */
             }
             100% {
-                bottom: 80px; /* Final position above the horizon, adjusted for container */
+                bottom: 80px; /* Final sun position */
+                transform: translateY(-100px); /* Stars move up, parallel to horizon */
             }
         }
+
+        /* Optional: Twinkle animation for stars */
+        /* @keyframes twinkle {
+            0% {
+                opacity: 0.7;
+                box-shadow:
+                -20px 10px 0 0px #ffffff80,
+                -40px 20px 0 0px #cccccc80,
+                -60px 30px 0 0px #dddddd80,
+                -80px 40px 0 0px #bbbbbb80,
+                -100px 50px 0 0px #eeeeee80,
+                -120px 60px 0 0px #dddddd80,
+                -140px 70px 0 0px #cccccc80,
+                -160px 80px 0 0px #ffffff80,
+                -180px 90px 0 0px #dddddd80,
+                -200px 100px 0 0px #bbbbbb80,
+                20px 10px 0 0px #eeeeee80,
+                40px 20px 0 0px #cccccc80,
+                60px 30px 0 0px #ffffff80,
+                80px 40px 0 0px #dddddd80,
+                100px 50px 0 0px #bbbbbb80,
+                120px 60px 0 0px #eeeeee80,
+                140px 70px 0 0px #cccccc80,
+                160px 80px 0 0px #ffffff80,
+                180px 90px 0 0px #dddddd80,
+                200px 100px 0 0px #bbbbbb80;
+            }
+            100% {
+                opacity: 1;
+                 box-shadow:
+                -20px 10px 0 0px #ffffff,
+                -40px 20px 0 0px #cccccc,
+                -60px 30px 0 0px #dddddd,
+                -80px 40px 0 0px #bbbbbb,
+                -100px 50px 0 0px #eeeeee,
+                -120px 60px 0 0px #dddddd,
+                -140px 70px 0 0px #cccccc,
+                -160px 80px 0 0px #ffffff,
+                -180px 90px 0 0px #dddddd,
+                -200px 100px 0 0px #bbbbbb,
+                20px 10px 0 0px #eeeeee,
+                40px 20px 0 0px #cccccc,
+                60px 30px 0 0px #ffffff,
+                80px 40px 0 0px #dddddd,
+                100px 50px 0 0px #bbbbbb,
+                120px 60px 0 0px #eeeeee,
+                140px 70px 0 0px #cccccc,
+                160px 80px 0 0px #ffffff,
+                180px 90px 0 0px #dddddd,
+                200px 100px 0 0px #bbbbbb;
+            }
+        } */
+
         .sunrise-caption {
             position: absolute;
             top: 5px; /* Position at the top */
@@ -546,7 +648,7 @@
             padding: 2px 5px; /* Add padding */
             box-sizing: border-box;
             background-color: #000; /* Black background */
-            z-index: 2; /* Ensure caption is above the sun */
+            z-index: 3; /* Ensure caption is above everything */
         }
 
 
@@ -742,8 +844,11 @@
                             </h2>
                         </div>
                         <div class="card__body">
-                            <!-- Sunrise Animation in Top Right Card -->
+                            <!-- Sunrise Animation with Stars in Top Right Card -->
                             <div class="sunrise-scene">
+                                <div class="stars-container">
+                                    <div class="star"></div>
+                                </div>
                                 <div class="sunrise-sun"></div>
                                 <div class="sunrise-horizon"></div>
                                 <div class="sunrise-caption">Sunrise representing diverse, segmented knowledge structure.</div>
