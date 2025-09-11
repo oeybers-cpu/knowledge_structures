@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bernstein's Knowledge Structures</title>
-    <meta name="description" content="Explore Bernstein's core concepts of vertical and horizontal knowledge structures, their influences, and broader sociological connections.">
-    <meta name="keywords" content="Bernstein, knowledge structures, vertical knowledge, horizontal knowledge, Legitimation Code Theory, Durkheim, Maton, Young, Muller, Bourdieu, Habermas, Giddens">
+    <title>Academic Literacies: Lea & Street's Model</title>
+    <meta name="description" content="Explore Lea & Street's Academic Literacies Model, a framework for understanding reading and writing as social practices in academic contexts.">
+    <meta name="keywords" content="Academic Literacies, Lea & Street, New Literacy Studies, Social Practice, Epistemology, Identity, Power, Higher Education, K-12">
     <meta name="author" content="Dr Oscar Eybers">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
@@ -35,8 +35,8 @@
             --sun-glow: #FFA000;
             --sun-ray-color: #FFD700;
             /* Header heights for scroll margin */
-            --top-header-height: 70px; /* Approximate height on larger screens */
-            --top-header-height-sm: 90px; /* Approximate height on small screens */
+            --top-header-height: 70px;
+            --top-header-height-sm: 90px;
         }
         body {
             background: linear-gradient(135deg, var(--darker), var(--dark));
@@ -75,7 +75,6 @@
             pointer-events: none;
             z-index: -1;
         }
-        /* New top header with title - Fixed for mobile */
         .top-header {
             position: fixed;
             top: 0;
@@ -140,14 +139,12 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
-        /* Main container */
         .main-container {
             width: 100%;
             max-width: 1400px;
             margin: 100px auto 0;
         }
 
-        /* Header with Sun Integration */
         header {
             text-align: center;
             padding: 20px 0;
@@ -183,7 +180,6 @@
             0% { left: -100%; }
             100% { left: 100%; }
         }
-        /* Sun container */
         .sun-container {
             position: absolute;
             top: 50%;
@@ -235,7 +231,6 @@
             50% { opacity: 1; }
             100% { opacity: 0.8; }
         }
-        /* Header content */
         .header-content {
             position: relative;
             z-index: 2;
@@ -293,7 +288,6 @@
             line-height: 1.6;
         }
 
-        /* Card Styles - Updated to BEM convention */
         .articles-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -301,7 +295,6 @@
             margin: 30px 0;
         }
 
-        /* Base card styling */
         .card {
             background: var(--card-bg);
             border: 1px solid rgba(207, 64, 255, 0.2);
@@ -314,7 +307,7 @@
             position: relative;
             overflow: hidden;
             height: 100%;
-            min-height: 500px; /* Adjusted height */
+            min-height: 550px;
         }
         .card::before {
             content: '';
@@ -337,10 +330,10 @@
             transform: scaleX(1);
         }
 
-        /* Card Header */
         .card__header {
             padding-bottom: 10px;
         }
+        /* Glow effect on hover for headings */
         .card__title {
             color: var(--digital-purple);
             font-size: 1.3rem;
@@ -348,9 +341,12 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            transition: text-shadow 0.3s ease;
+        }
+        .card__title:hover {
+            text-shadow: 0 0 8px var(--digital-purple), 0 0 16px rgba(207, 64, 255, 0.5);
         }
 
-        /* Card Body */
         .card__body {
             flex-grow: 1;
             display: flex;
@@ -359,7 +355,7 @@
         }
         .card__image {
             width: 100%;
-            height: 200px; /* Adjusted image height */
+            height: 220px;
             object-fit: cover;
             object-position: center;
             border-radius: 8px;
@@ -388,7 +384,6 @@
             color: var(--primary);
         }
 
-        /* Card Meta */
         .card__meta {
             display: flex;
             flex-wrap: wrap;
@@ -404,7 +399,6 @@
             border: 1px solid rgba(207, 64, 255, 0.3);
         }
 
-        /* Card Footer */
         .card__footer {
             background: rgba(207, 64, 255, 0.08);
             border-top: 1px solid rgba(207, 64, 255, 0.2);
@@ -415,7 +409,6 @@
             margin-top: 15px;
         }
 
-        /* Content sections */
         .content-section {
             margin-bottom: 40px;
             scroll-margin-top: calc(var(--top-header-height) + 10px);
@@ -428,6 +421,10 @@
             border-bottom: 1px solid rgba(207, 64, 255, 0.3);
             font-family: 'Orbitron', sans-serif;
             text-align: center;
+            transition: text-shadow 0.3s ease;
+        }
+        .section-title:hover {
+             text-shadow: 0 0 8px var(--digital-purple), 0 0 16px rgba(207, 64, 255, 0.5);
         }
         .copyright {
             text-align: center;
@@ -447,7 +444,6 @@
             width: 100%;
         }
 
-        /* Responsive Design Improvements */
         @media (max-width: 1100px) {
             .articles-container {
                 grid-template-columns: 1fr;
@@ -540,7 +536,7 @@
 <body>
     <div class="grid-lines"></div>
     <div class="top-header">
-        <h1>Bernstein's Knowledge Structures</h1>
+        <h1>Lea & Street's Academic Literacies Model</h1>
     </div>
     <a href="#" class="back-button-tab" id="backButton">
         <i class="fas fa-arrow-left" aria-hidden="true"></i> Back
@@ -555,185 +551,159 @@
                 </div>
                 <div class="header-content">
                     <div class="contact-card">
-                        <h2><i class="fas fa-lightbulb" aria-hidden="true"></i> Key Insight</h2>
-                        <p>"The way knowledge is structured—whether vertically integrated or horizontally segmented—profoundly influences how it is taught, learned, and accessed within educational systems."</p>
+                        <h2><i class="fas fa-lightbulb" aria-hidden="true"></i> Core Insight</h2>
+                        <p>"Academic literacies treats reading and writing as social practices that vary with context, culture, and genre, foregrounding meaning-making, identity, power, and authority."</p>
                     </div>
                 </div>
             </header>
 
             <div class="content-section">
-                <h2 class="section-title">Core Concepts</h2>
+                <h2 class="section-title">Foundational Models & Theory</h2>
                 <div class="articles-container">
-                    <!-- Card 1: Vertical Knowledge -->
+                    <!-- Card 1: Three Models -->
                     <div class="card">
                         <div class="card__header">
                             <h2 class="card__title">
-                                <i class="fas fa-layer-group" aria-hidden="true"></i> Vertical Knowledge Structures
+                                <i class="fas fa-chart-bar" aria-hidden="true"></i> The Three Overlapping Models
                             </h2>
                         </div>
                         <div class="card__body">
-                            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&h=200&q=80"
-                                 alt="Hierarchical structure like a pyramid or building blocks stacking up"
+                            <img src="https://github.com/oeybers-cpu/a_lit_models/blob/main/1756310906.png?raw=true"
+                                 alt="Three models of academic literacy showing different approaches to understanding literacy practices"
                                  class="card__image">
-                            <p>Vertical knowledge structures are organized hierarchically. Knowledge builds systematically, with each new concept integrating and extending previous ones.</p>
-                            <p>This is typical in disciplines like physics or mathematics, where foundational principles support more complex theories. Bernstein called these "hierarchical knowledge structures" because they allow for cumulative learning and clear progression.</p>
+                            <p>Lea and Street identified three conceptual models that guide understanding of student writing and literacy in academic contexts. The first, the study skills model, views literacy as an individual, cognitive skill, focusing on surface language features and presuming easy transferability across contexts. The second, the academic socialization model, concerns students' acculturation into disciplinary discourses, assuming these genres are relatively stable and can be reproduced once learned.</p>
+                            <p>These models, while influential, often frame student difficulties as deficits. The skills model treats differences as lack of technique, while the socialization model can imply a passive absorption of norms. This sets the stage for the third, more nuanced model that challenges these deficit perspectives by situating literacy within broader social and institutional dynamics, moving beyond simple skill acquisition or socialisation.</p>
                             <blockquote class="card__quote">
-                                <i class="fas fa-quote-left" aria-hidden="true"></i> In vertical structures, knowledge is cumulative, building upon itself in a coherent, integrated way.
+                                <i class="fas fa-quote-left" aria-hidden="true"></i> Rather than engaging in debates about good or bad writing, the academic literacies model conceptualizes writing at the level of epistemology.
                             </blockquote>
                             <div class="card__meta">
-                                <span class="tag">Hierarchy</span>
-                                <span class="tag">Cumulative</span>
-                                <span class="tag">Integration</span>
-                                <span class="tag">Sciences</span>
+                                <span class="tag">Study Skills</span>
+                                <span class="tag">Academic Socialization</span>
+                                <span class="tag">Deficit Models</span>
                             </div>
                         </div>
                         <footer class="card__footer">
-                            Characterized by systematic progression and integration of concepts.
+                            Understanding the foundational perspectives that the Academic Literacies model challenges.
                         </footer>
                     </div>
 
-                    <!-- Card 2: Horizontal Knowledge -->
+                    <!-- Card 2: Academic Literacies Model -->
                     <div class="card">
                         <div class="card__header">
                             <h2 class="card__title">
-                                <i class="fas fa-th-large" aria-hidden="true"></i> Horizontal Knowledge Structures
+                                <i class="fas fa-book-open" aria-hidden="true"></i> The Academic Literacies Model
                             </h2>
                         </div>
                         <div class="card__body">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&h=200&q=80"
-                                 alt="Segmented structure like separate boxes or puzzle pieces"
+                            <img src="https://github.com/oeybers-cpu/acadlit_apartheid/blob/main/new%20al%202.png?raw=true"
+                                 alt="Academic literacies model showing social practice framework"
                                  class="card__image">
-                            <p>Horizontal knowledge structures are segmented. They consist of distinct, often unrelated approaches or languages within a field.</p>
-                            <p>For example, in the humanities, different literary theories (e.g., Marxist, feminist, postcolonial) may coexist without a single integrating framework. Bernstein described these as "segmented knowledge structures," emphasizing the lack of overarching propositions that unify the field.</p>
+                            <p>The academic literacies model is the core framework proposed by Lea and Street. It treats reading and writing as social practices that vary with context, culture, and genre, not as neutral or transferable skills. This model foregrounds meaning-making, identity, power, and authority, viewing student writing and learning as issues of epistemology and identity. It examines how literacy practices are shaped by and shape institutional requirements, disciplinary norms, and social processes, including power relations.</p>
+                            <p>Unlike the socialization model, it sees the acquisition of academic literacies as complex, dynamic, and situated. It acknowledges that students must navigate not just disciplinary discourses, but also broader institutional discourses (like plagiarism policies or feedback mechanisms). This model emphasizes the active role of students in negotiating and constructing meaning within these varied and sometimes conflicting demands, highlighting the contested nature of academic knowledge.</p>
                             <blockquote class="card__quote">
-                                <i class="fas fa-quote-left" aria-hidden="true"></i> In horizontal structures, knowledge areas exist side-by-side, often incommensurable with each other.
+                                <i class="fas fa-quote-left" aria-hidden="true"></i> The academic literacies model goes further by focusing on the relationship of epistemology and writing... in institutional requirements, as well as in more specific contexts.
                             </blockquote>
                             <div class="card__meta">
-                                <span class="tag">Segmentation</span>
-                                <span class="tag">Parallel</span>
-                                <span class="tag">Incommensurable</span>
-                                <span class="tag">Humanities</span>
+                                <span class="tag">Social Practice</span>
+                                <span class="tag">Epistemology</span>
+                                <span class="tag">Power</span>
+                                <span class="tag">Identity</span>
                             </div>
                         </div>
                         <footer class="card__footer">
-                            Characterized by distinct, parallel, and often unrelated knowledge areas.
+                            The core framework that views literacy as complex, situated social practice.
                         </footer>
                     </div>
                 </div>
             </div>
 
-            <!-- Influences and Extensions -->
             <div class="content-section">
-                <h2 class="section-title">Influences & Extensions</h2>
+                 <h2 class="section-title">Application & Practice</h2>
                 <div class="articles-container">
-                    <!-- Card 3: Influences -->
+                    <!-- Card 3: Genre and Mode Switching -->
                     <div class="card">
                         <div class="card__header">
                             <h2 class="card__title">
-                                <i class="fas fa-users" aria-hidden="true"></i> Influences on Bernstein
+                                <i class="fas fa-exchange-alt" aria-hidden="true"></i> Navigating Genres and Modes
                             </h2>
                         </div>
                         <div class="card__body">
-                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&h=200&q=80"
-                                 alt="Ancient philosopher or thinker"
+                            <img src="https://github.com/oeybers-cpu/a_lit_models/blob/main/al%20class.png?raw=true"
+                                 alt="Students switching between different communication modes in classroom setting"
                                  class="card__image">
-                            <p><strong>Durkheim:</strong> Bernstein’s thinking was shaped by Durkheim’s distinction between the sacred (integrated, collective) and the profane (segmented, individual), which helped frame how knowledge can be socially organized.</p>
-                            <p>These foundational ideas provided a sociological lens through which Bernstein analyzed the organization of knowledge itself.</p>
+                            <p>A key feature of student experience, highlighted by the academic literacies model, is the constant navigation and switching between different genres and modes of communication. Genres are types of text (discussions, notes, essays) with specific expectations, while modes refer to channels like speech, writing, or visual layout. Students must shift from internal thoughts to group talk, from spoken discussion to written notes, and from notes to formal essays, each requiring different semiotic resources and linguistic features.</p>
+                            <p>This complex navigation demonstrates why a narrow focus on technical skills is inadequate. The model emphasizes the need for explicit attention to these shifts and transformations. Understanding that writing involves not just words but also layout, and that meaning is constructed through the interplay of multiple modes, is crucial. Students often struggle because they are not made explicitly aware of the distinct qualities and requirements of each genre and mode they encounter across different academic settings.</p>
+                            <blockquote class="card__quote">
+                                <i class="fas fa-quote-left" aria-hidden="true"></i> Students must develop awareness of the different qualities associated with various genres and modes as they move between communication contexts in academic work.
+                            </blockquote>
                             <div class="card__meta">
-                                <span class="tag">Durkheim</span>
-                                <span class="tag">Sacred/Profane</span>
-                                <span class="tag">Social Organization</span>
+                                <span class="tag">Genre</span>
+                                <span class="tag">Mode</span>
+                                <span class="tag">Transformation</span>
+                                <span class="tag">Multimodality</span>
                             </div>
                         </div>
                         <footer class="card__footer">
-                            Durkheim's concepts of sacred and profane influenced Bernstein's framework.
+                            Recognizing the complex shifts students make between academic communication forms.
                         </footer>
                     </div>
 
-                    <!-- Card 4: Extensions -->
+                    <!-- Card 4: Design Frame & Pedagogy -->
                     <div class="card">
                         <div class="card__header">
                             <h2 class="card__title">
-                                <i class="fas fa-project-diagram" aria-hidden="true"></i> Extensions & Applications
+                                <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i> Pedagogy & Design Frame
                             </h2>
                         </div>
                         <div class="card__body">
-                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=600&h=200&q=80"
-                                 alt="Academic research and theory development"
+                            <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/digital_communication_africa.png?raw=true"
+                                 alt="Educators applying academic literacies principles in curriculum design"
                                  class="card__image">
-                            <p><strong>Karl Maton:</strong> Developed Legitimation Code Theory (LCT), which extends Bernstein’s ideas by analyzing how knowledge is legitimated and structured in different fields. Maton’s work helps explain how vertical and horizontal structures affect curriculum and assessment.</p>
-                            <p><strong>Young & Muller:</strong> These scholars further elaborated on Bernstein’s concepts, distinguishing between "vertical" and "horizontal discourses" and exploring how these structures shape educational practices and access to knowledge.</p>
+                            <p>Lea and Street argue the academic literacies model should function as a 'design frame' for pedagogy, curriculum, and instruction. This means making explicit the often hidden demands of genre and mode switching, and helping students understand the social and epistemological nature of academic tasks. It involves collaborative investigation by educators and students into the range of practices, identities, and meaning-making processes involved, rather than treating students as passive recipients or deficient.</p>
+                            <p>Examples like the Academic Literacy Development Programme and the Open University Law course illustrate this. Teaching focused explicitly on the shifts between thoughts, talk, notes, presentations, and essays, helping students understand the distinct semiotic demands. For educators, it means reflecting on their own writing practices and identities, recognizing the complexity of constructing academic knowledge through specific, contextualized writing practices, not just transmitting content.</p>
+                            <blockquote class="card__quote">
+                                <i class="fas fa-quote-left" aria-hidden="true"></i> Treating such students as collaborators in the development of the academic literacies necessary... can perhaps offer a different and more supportive route to 'Widening Participation'.
+                            </blockquote>
                             <div class="card__meta">
-                                <span class="tag">Maton</span>
-                                <span class="tag">LCT</span>
-                                <span class="tag">Young & Muller</span>
-                                <span class="tag">Curriculum</span>
+                                <span class="tag">Pedagogy</span>
+                                <span class="tag">Design Frame</span>
+                                <span class="tag">Collaboration</span>
+                                <span class="tag">Institutional Practices</span>
                             </div>
                         </div>
                         <footer class="card__footer">
-                            Scholars like Maton, Young & Muller expanded Bernstein's theoretical framework.
+                            Applying the model's principles to create more supportive learning environments.
                         </footer>
                     </div>
                 </div>
             </div>
 
-            <!-- Broader Connections -->
+            <!-- Centered final card -->
             <div class="centered-card">
                 <div class="card">
                     <div class="card__header">
                         <h2 class="card__title">
-                            <i class="fas fa-network-wired" aria-hidden="true"></i> Broader Sociological Connections
+                            <i class="fas fa-globe-africa" aria-hidden="true"></i> Implications & Broader Context
                         </h2>
                     </div>
                     <div class="card__body">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=700&h=250&q=80"
-                             alt="Interconnected nodes representing sociological theories"
+                        <img src="https://github.com/oeybers-cpu/Ubuntu_2/blob/main/ubuntu.png?raw=true"
+                             alt="Interconnected academic communities representing global knowledge exchange"
                              class="card__image">
-                        <p><strong>Bourdieu:</strong> His concepts of cultural capital and field relate to how knowledge is valued and distributed, though he focuses more on power and social reproduction than on knowledge structure per se.</p>
-                        <p><strong>Habermas:</strong> Explores how communicative action and rationality shape discourse, offering a different lens on how knowledge is organized and legitimized.</p>
-                        <p><strong>Giddens:</strong> His structuration theory considers how social practices and structures interact, which can be linked to how knowledge is produced and maintained.</p>
+                        <p>The academic literacies model has broad implications for understanding education across contexts, from K-12 to higher education. It challenges dominant deficit models by highlighting the specificity and variety of institutional practices students encounter. By foregrounding issues of power, identity, and meaning-making, it moves beyond simplistic views of literacy as skill or socialization, linking directly to broader sociological and critical theories about knowledge and education.</p>
+                        <p>This perspective encourages educators to view student struggles not as individual failings, but as challenges inherent in navigating complex, often contested, academic landscapes. It emphasizes the importance of making explicit the social nature of academic knowledge and the diverse literacy practices required for participation. This understanding supports more inclusive and reflective pedagogical approaches that recognize and build upon students' existing repertoires and experiences.</p>
                         <blockquote class="card__quote">
-                            <i class="fas fa-quote-left" aria-hidden="true"></i> Bernstein's work intersects with broader sociological theories about power, reproduction, and the social construction of reality.
+                            <i class="fas fa-quote-left" aria-hidden="true"></i> Approaches to student writing and literacy in academic contexts could be conceptualized through the use of three overlapping perspectives or models.
                         </blockquote>
                         <div class="card__meta">
-                            <span class="tag">Bourdieu</span>
-                            <span class="tag">Habermas</span>
-                            <span class="tag">Giddens</span>
-                            <span class="tag">Power</span>
-                            <span class="tag">Reproduction</span>
+                            <span class="tag">Implications</span>
+                            <span class="tag">Inclusivity</span>
+                            <span class="tag">Critical Theory</span>
+                            <span class="tag">K-12 & HE</span>
                         </div>
                     </div>
                     <footer class="card__footer">
-                        Bernstein's concepts connect with wider sociological theories on knowledge and society.
-                    </footer>
-                </div>
-            </div>
-
-            <!-- Quick Review -->
-            <div class="centered-card">
-                <div class="card">
-                    <div class="card__header">
-                        <h2 class="card__title">
-                            <i class="fas fa-check-circle" aria-hidden="true"></i> Quick Review
-                        </h2>
-                    </div>
-                    <div class="card__body">
-                        <ul style="padding-left: 20px; margin-bottom: 20px;">
-                            <li style="margin-bottom: 10px;"><strong>Vertical:</strong> Hierarchical, cumulative, integrated (e.g., sciences).</li>
-                            <li style="margin-bottom: 10px;"><strong>Horizontal:</strong> Segmented, parallel, incommensurable (e.g., humanities).</li>
-                        </ul>
-                        <p>Bernstein is the key theorist, with Maton, Young & Muller expanding the framework.</p>
-                        <blockquote class="card__quote">
-                            <i class="fas fa-quote-left" aria-hidden="true"></i> Understanding these structures helps illuminate how knowledge is organized, transmitted, and accessed in education.
-                        </blockquote>
-                        <div class="card__meta">
-                            <span class="tag">Summary</span>
-                            <span class="tag">Key Points</span>
-                            <span class="tag">Bernstein</span>
-                        </div>
-                    </div>
-                    <footer class="card__footer">
-                        A concise summary of the core ideas and their significance.
+                        Understanding the wider significance of the academic literacies perspective.
                     </footer>
                 </div>
             </div>
