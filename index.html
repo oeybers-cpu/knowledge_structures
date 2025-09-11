@@ -496,6 +496,58 @@
             }
         }
 
+        /* Sunrise Animation Styles */
+        .sunrise-scene {
+            position: relative;
+            width: 100%;
+            height: 220px; /* Match card image height */
+            overflow: hidden;
+            background: linear-gradient(to top, #4a007f, #000);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 2px solid rgba(207, 64, 255, 0.3);
+        }
+        .sunrise-horizon {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+            box-shadow: 0 0 15px 5px #fff;
+            z-index: 1; /* Ensure horizon is above the sun */
+        }
+        .sunrise-sun {
+            position: absolute;
+            bottom: -50px; /* Start below the horizon */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px; /* Adjusted size */
+            height: 60px; /* Adjusted size */
+            background: linear-gradient(to bottom, #ffd700, #ff8c00);
+            border-radius: 50%;
+            animation: rise 10s ease-in-out forwards;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+        }
+        @keyframes rise {
+            0% {
+                bottom: -50px;
+            }
+            100% {
+                bottom: 80px; /* Final position above the horizon, adjusted for container */
+            }
+        }
+        .sunrise-caption {
+            position: absolute;
+            bottom: 5px;
+            width: 100%;
+            text-align: center;
+            color: #ddd;
+            font-size: 0.75rem;
+            padding: 0 5px;
+            box-sizing: border-box;
+            z-index: 2; /* Ensure caption is above the sun */
+        }
+
         /* Responsive Design Improvements */
         @media (max-width: 1200px) {
             .top-nav {
@@ -688,9 +740,14 @@
                             </h2>
                         </div>
                         <div class="card__body">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&h=200&q=80"
-                                 alt="Segmented structure like separate boxes or puzzle pieces"
-                                 class="card__image">
+                            <!-- Replaced Image Section with Sunrise Animation -->
+                            <div class="sunrise-scene">
+                                <div class="sunrise-sun"></div>
+                                <div class="sunrise-horizon"></div>
+                                <div class="sunrise-caption">Sunrise representing diverse, segmented knowledge structure.</div>
+                            </div>
+                            <!-- End of Replaced Image Section -->
+
                             <p>Bernstein's horizontal knowledge structures are segmented, consisting of distinct, often unrelated approaches or languages within a field. These lack a single integrating framework, leading to weaker classification and framing. Boundaries between knowledge areas are less defined, and the rules for acquiring and using knowledge can be more ambiguous or context-dependent. This is typical in fields like the humanities, where different theories (e.g., Marxist, feminist, postcolonial) coexist without a unifying principle.</p>
                             <p>The academic literacies model is particularly valuable for understanding horizontal structures. It highlights how students must navigate diverse, often competing genres and discourses within these fields. The model emphasises the situated nature of literacy practices, where meaning, identity, and power are negotiated differently in each segmented area. Rather than a single, correct way to write or argue, students must learn to adapt their literacy practices to the specific, often context-dependent rules (weaker framing) of each segment.</p>
                             <blockquote class="card__quote">
