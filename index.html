@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bernstein's Knowledge Structures</title>
+    <meta name="description" content="Explore Bernstein's core concepts of vertical and horizontal knowledge structures, their influences, and broader sociological connections.">
+    <meta name="keywords" content="Bernstein, knowledge structures, vertical knowledge, horizontal knowledge, Legitimation Code Theory, Durkheim, Maton, Young, Muller, Bourdieu, Habermas, Giddens">
+    <meta name="author" content="Dr Oscar Eybers">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary: #4fc3f7;
+            --secondary: #29b6f6;
+            --accent: #0288d1;
+            --dark: #0a0a14;
+            --darker: #050508;
+            --light: #f0f0f0;
+            --card-bg: rgba(20, 20, 30, 0.7);
+            --lighter-accent: #81d4fa;
+            --digital-purple: #cf40ff;
+            --royal-blue: #4169E1;
+            --royal-blue-light: #6c8eff;
+            --aqua-blue: #00FFFF;
+            --card-padding: 20px;
+            --card-gap: 25px;
+            /* Sun variables */
+            --sun-color: #FFC107;
+            --sun-glow: #FFA000;
+            --sun-ray-color: #FFD700;
+            /* Header heights for scroll margin */
+            --top-header-height: 70px; /* Approximate height on larger screens */
+            --top-header-height-sm: 90px; /* Approximate height on small screens */
+        }
+        body {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            font-family: 'Exo 2', sans-serif;
+            line-height: 1.6;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(79, 195, 247, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(41, 182, 246, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(2, 136, 209, 0.03) 0%, transparent 30%);
+            pointer-events: none;
+            z-index: -2;
+        }
+        .grid-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(79, 195, 247, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(79, 195, 247, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        /* New top header with title - Fixed for mobile */
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(10, 10, 20, 0.8);
+            border-bottom: 1px solid rgba(207, 64, 255, 0.3);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        .top-header h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 9px rgba(207, 64, 255, 0.6);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            animation: pulseText 3s infinite alternate;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 70%;
+        }
+        @keyframes pulseText {
+            0% { text-shadow: 0 0 9px rgba(207, 64, 255, 0.6); }
+            100% { text-shadow: 0 0 16px rgba(207, 64, 255, 0.8), 0 0 24px rgba(207, 64, 255, 0.6); }
+        }
+
+        .back-button-tab {
+            position: fixed;
+            top: 25px;
+            left: 25px;
+            z-index: 1001;
+            background: rgba(20, 20, 30, 0.7);
+            border: 1px solid var(--royal-blue);
+            color: var(--royal-blue);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(65, 105, 225, 0.3);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .back-button-tab:hover {
+            background: rgba(65, 105, 225, 0.2);
+            transform: translateX(-5px);
+            box-shadow: 0 0 20px rgba(65, 105, 225, 0.5);
+            color: var(--light);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Main container */
+        .main-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 100px auto 0;
+        }
+
+        /* Header with Sun Integration */
+        header {
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent);
+            border-bottom: 1px solid rgba(207, 64, 255, 0.3);
+            margin-bottom: 30px;
+            border-radius: 0 0 15px 15px;
+            overflow: hidden;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                transparent,
+                rgba(0, 0, 0, 0.7),
+                rgba(0, 0, 0, 0.7),
+                rgba(0, 0, 0, 0.7),
+                transparent);
+            animation: headerShine 8s infinite linear;
+            z-index: -1;
+        }
+        @keyframes headerShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        /* Sun container */
+        .sun-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+        .sun-core {
+            width: 120px;
+            height: 120px;
+            background: var(--sun-color);
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 30px 12px var(--sun-glow);
+            animation: sun-pulse 8s infinite ease-in-out;
+        }
+        .sun-rays {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            z-index: 1;
+            background: repeating-conic-gradient(from 0deg, var(--sun-ray-color) 0deg 3deg, transparent 3deg 20deg);
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: ray-rotate 20s infinite linear, ray-pulse 4s infinite ease-in-out;
+            box-shadow: 0 0 20px 6px var(--sun-ray-color);
+        }
+        @keyframes sun-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes ray-rotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @keyframes ray-pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+        /* Header content */
+        .header-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .contact-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(207, 64, 255, 0.2);
+            border-radius: 11.25px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 20px auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 18px rgba(207, 64, 255, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--digital-purple));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+            z-index: 1;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 24px rgba(207, 64, 255, 0.3);
+        }
+        .contact-card:hover::before {
+            transform: scaleX(1);
+        }
+        .contact-card h2 {
+            color: var(--digital-purple);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .contact-card p {
+            color: #ddd;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Card Styles - Updated to BEM convention */
+        .articles-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--card-gap);
+            margin: 30px 0;
+        }
+
+        /* Base card styling */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(207, 64, 255, 0.2);
+            border-radius: 12px;
+            padding: var(--card-padding);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(207, 64, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            min-height: 500px; /* Adjusted height */
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--digital-purple), var(--royal-blue));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+            z-index: 1;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(207, 64, 255, 0.3);
+        }
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Card Header */
+        .card__header {
+            padding-bottom: 10px;
+        }
+        .card__title {
+            color: var(--digital-purple);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Card Body */
+        .card__body {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card__image {
+            width: 100%;
+            height: 200px; /* Adjusted image height */
+            object-fit: cover;
+            object-position: center;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 2px solid rgba(207, 64, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .card:hover .card__image {
+            transform: scale(1.03);
+        }
+        .card__quote {
+            background: rgba(207, 64, 255, 0.15);
+            color: var(--primary);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(207, 64, 255, 0.3);
+            margin: 15px 0;
+            position: relative;
+            padding-left: 40px;
+        }
+        .card__quote i {
+            position: absolute;
+            left: 12px;
+            top: 12px;
+            color: var(--primary);
+        }
+
+        /* Card Meta */
+        .card__meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+        }
+        .tag {
+            background: rgba(207, 64, 255, 0.15);
+            color: var(--primary);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(207, 64, 255, 0.3);
+        }
+
+        /* Card Footer */
+        .card__footer {
+            background: rgba(207, 64, 255, 0.08);
+            border-top: 1px solid rgba(207, 64, 255, 0.2);
+            padding: 12px 15px;
+            border-radius: 0 0 8px 8px;
+            font-size: 0.85rem;
+            color: var(--lighter-accent);
+            margin-top: 15px;
+        }
+
+        /* Content sections */
+        .content-section {
+            margin-bottom: 40px;
+            scroll-margin-top: calc(var(--top-header-height) + 10px);
+        }
+        .section-title {
+            color: var(--digital-purple);
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(207, 64, 255, 0.3);
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+        }
+        .copyright {
+            text-align: center;
+            padding: 30px 0;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(207, 64, 255, 0.2);
+            margin-top: 40px;
+        }
+        .centered-card {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+        }
+        .centered-card > .card {
+            max-width: 700px;
+            width: 100%;
+        }
+
+        /* Responsive Design Improvements */
+        @media (max-width: 1100px) {
+            .articles-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 900px) {
+            .top-header h1 {
+                font-size: 1.5rem;
+            }
+            header {
+                min-height: 250px;
+            }
+            .sun-container {
+                width: 250px;
+                height: 250px;
+            }
+            .sun-core {
+                width: 100px;
+                height: 100px;
+            }
+            .sun-rays {
+                width: 250px;
+                height: 250px;
+            }
+        }
+        @media (max-width: 768px) {
+            .card__image {
+                 height: 180px;
+            }
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            .back-button-tab {
+                top: 65px;
+                left: 15px;
+                padding: 8px 15px;
+                font-size: 0.8rem;
+                z-index: 1002;
+            }
+            .sun-container {
+                width: 200px;
+                height: 200px;
+            }
+            .sun-core {
+                width: 80px;
+                height: 80px;
+                box-shadow: 0 0 20px 8px var(--sun-glow);
+            }
+            .sun-rays {
+                width: 200px;
+                height: 200px;
+                box-shadow: 0 0 15px 4px var(--sun-ray-color);
+            }
+            header {
+                min-height: 220px;
+            }
+            .top-header {
+                padding: 15px 10px;
+                flex-direction: column;
+                height: auto;
+            }
+            .top-header h1 {
+                font-size: 1.3rem;
+                max-width: 100%;
+            }
+            .contact-card {
+                padding: 15px;
+                margin: 15px auto;
+            }
+            .contact-card h2 {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .card__title {
+                font-size: 1.1rem;
+            }
+            .main-container {
+                margin: calc(var(--top-header-height-sm) + 20px) auto 0;
+            }
+            .content-section {
+                scroll-margin-top: calc(var(--top-header-height-sm) + 15px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-lines"></div>
+    <div class="top-header">
+        <h1>Bernstein's Knowledge Structures</h1>
+    </div>
+    <a href="#" class="back-button-tab" id="backButton">
+        <i class="fas fa-arrow-left" aria-hidden="true"></i> Back
+    </a>
+
+    <div class="main-container">
+        <div class="container">
+            <header>
+                <div class="sun-container">
+                    <div class="sun-core"></div>
+                    <div class="sun-rays"></div>
+                </div>
+                <div class="header-content">
+                    <div class="contact-card">
+                        <h2><i class="fas fa-lightbulb" aria-hidden="true"></i> Key Insight</h2>
+                        <p>"The way knowledge is structured—whether vertically integrated or horizontally segmented—profoundly influences how it is taught, learned, and accessed within educational systems."</p>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-section">
+                <h2 class="section-title">Core Concepts</h2>
+                <div class="articles-container">
+                    <!-- Card 1: Vertical Knowledge -->
+                    <div class="card">
+                        <div class="card__header">
+                            <h2 class="card__title">
+                                <i class="fas fa-layer-group" aria-hidden="true"></i> Vertical Knowledge Structures
+                            </h2>
+                        </div>
+                        <div class="card__body">
+                            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&h=200&q=80"
+                                 alt="Hierarchical structure like a pyramid or building blocks stacking up"
+                                 class="card__image">
+                            <p>Vertical knowledge structures are organized hierarchically. Knowledge builds systematically, with each new concept integrating and extending previous ones.</p>
+                            <p>This is typical in disciplines like physics or mathematics, where foundational principles support more complex theories. Bernstein called these "hierarchical knowledge structures" because they allow for cumulative learning and clear progression.</p>
+                            <blockquote class="card__quote">
+                                <i class="fas fa-quote-left" aria-hidden="true"></i> In vertical structures, knowledge is cumulative, building upon itself in a coherent, integrated way.
+                            </blockquote>
+                            <div class="card__meta">
+                                <span class="tag">Hierarchy</span>
+                                <span class="tag">Cumulative</span>
+                                <span class="tag">Integration</span>
+                                <span class="tag">Sciences</span>
+                            </div>
+                        </div>
+                        <footer class="card__footer">
+                            Characterized by systematic progression and integration of concepts.
+                        </footer>
+                    </div>
+
+                    <!-- Card 2: Horizontal Knowledge -->
+                    <div class="card">
+                        <div class="card__header">
+                            <h2 class="card__title">
+                                <i class="fas fa-th-large" aria-hidden="true"></i> Horizontal Knowledge Structures
+                            </h2>
+                        </div>
+                        <div class="card__body">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&h=200&q=80"
+                                 alt="Segmented structure like separate boxes or puzzle pieces"
+                                 class="card__image">
+                            <p>Horizontal knowledge structures are segmented. They consist of distinct, often unrelated approaches or languages within a field.</p>
+                            <p>For example, in the humanities, different literary theories (e.g., Marxist, feminist, postcolonial) may coexist without a single integrating framework. Bernstein described these as "segmented knowledge structures," emphasizing the lack of overarching propositions that unify the field.</p>
+                            <blockquote class="card__quote">
+                                <i class="fas fa-quote-left" aria-hidden="true"></i> In horizontal structures, knowledge areas exist side-by-side, often incommensurable with each other.
+                            </blockquote>
+                            <div class="card__meta">
+                                <span class="tag">Segmentation</span>
+                                <span class="tag">Parallel</span>
+                                <span class="tag">Incommensurable</span>
+                                <span class="tag">Humanities</span>
+                            </div>
+                        </div>
+                        <footer class="card__footer">
+                            Characterized by distinct, parallel, and often unrelated knowledge areas.
+                        </footer>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Influences and Extensions -->
+            <div class="content-section">
+                <h2 class="section-title">Influences & Extensions</h2>
+                <div class="articles-container">
+                    <!-- Card 3: Influences -->
+                    <div class="card">
+                        <div class="card__header">
+                            <h2 class="card__title">
+                                <i class="fas fa-users" aria-hidden="true"></i> Influences on Bernstein
+                            </h2>
+                        </div>
+                        <div class="card__body">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&h=200&q=80"
+                                 alt="Ancient philosopher or thinker"
+                                 class="card__image">
+                            <p><strong>Durkheim:</strong> Bernstein’s thinking was shaped by Durkheim’s distinction between the sacred (integrated, collective) and the profane (segmented, individual), which helped frame how knowledge can be socially organized.</p>
+                            <p>These foundational ideas provided a sociological lens through which Bernstein analyzed the organization of knowledge itself.</p>
+                            <div class="card__meta">
+                                <span class="tag">Durkheim</span>
+                                <span class="tag">Sacred/Profane</span>
+                                <span class="tag">Social Organization</span>
+                            </div>
+                        </div>
+                        <footer class="card__footer">
+                            Durkheim's concepts of sacred and profane influenced Bernstein's framework.
+                        </footer>
+                    </div>
+
+                    <!-- Card 4: Extensions -->
+                    <div class="card">
+                        <div class="card__header">
+                            <h2 class="card__title">
+                                <i class="fas fa-project-diagram" aria-hidden="true"></i> Extensions & Applications
+                            </h2>
+                        </div>
+                        <div class="card__body">
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=600&h=200&q=80"
+                                 alt="Academic research and theory development"
+                                 class="card__image">
+                            <p><strong>Karl Maton:</strong> Developed Legitimation Code Theory (LCT), which extends Bernstein’s ideas by analyzing how knowledge is legitimated and structured in different fields. Maton’s work helps explain how vertical and horizontal structures affect curriculum and assessment.</p>
+                            <p><strong>Young & Muller:</strong> These scholars further elaborated on Bernstein’s concepts, distinguishing between "vertical" and "horizontal discourses" and exploring how these structures shape educational practices and access to knowledge.</p>
+                            <div class="card__meta">
+                                <span class="tag">Maton</span>
+                                <span class="tag">LCT</span>
+                                <span class="tag">Young & Muller</span>
+                                <span class="tag">Curriculum</span>
+                            </div>
+                        </div>
+                        <footer class="card__footer">
+                            Scholars like Maton, Young & Muller expanded Bernstein's theoretical framework.
+                        </footer>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Broader Connections -->
+            <div class="centered-card">
+                <div class="card">
+                    <div class="card__header">
+                        <h2 class="card__title">
+                            <i class="fas fa-network-wired" aria-hidden="true"></i> Broader Sociological Connections
+                        </h2>
+                    </div>
+                    <div class="card__body">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=700&h=250&q=80"
+                             alt="Interconnected nodes representing sociological theories"
+                             class="card__image">
+                        <p><strong>Bourdieu:</strong> His concepts of cultural capital and field relate to how knowledge is valued and distributed, though he focuses more on power and social reproduction than on knowledge structure per se.</p>
+                        <p><strong>Habermas:</strong> Explores how communicative action and rationality shape discourse, offering a different lens on how knowledge is organized and legitimized.</p>
+                        <p><strong>Giddens:</strong> His structuration theory considers how social practices and structures interact, which can be linked to how knowledge is produced and maintained.</p>
+                        <blockquote class="card__quote">
+                            <i class="fas fa-quote-left" aria-hidden="true"></i> Bernstein's work intersects with broader sociological theories about power, reproduction, and the social construction of reality.
+                        </blockquote>
+                        <div class="card__meta">
+                            <span class="tag">Bourdieu</span>
+                            <span class="tag">Habermas</span>
+                            <span class="tag">Giddens</span>
+                            <span class="tag">Power</span>
+                            <span class="tag">Reproduction</span>
+                        </div>
+                    </div>
+                    <footer class="card__footer">
+                        Bernstein's concepts connect with wider sociological theories on knowledge and society.
+                    </footer>
+                </div>
+            </div>
+
+            <!-- Quick Review -->
+            <div class="centered-card">
+                <div class="card">
+                    <div class="card__header">
+                        <h2 class="card__title">
+                            <i class="fas fa-check-circle" aria-hidden="true"></i> Quick Review
+                        </h2>
+                    </div>
+                    <div class="card__body">
+                        <ul style="padding-left: 20px; margin-bottom: 20px;">
+                            <li style="margin-bottom: 10px;"><strong>Vertical:</strong> Hierarchical, cumulative, integrated (e.g., sciences).</li>
+                            <li style="margin-bottom: 10px;"><strong>Horizontal:</strong> Segmented, parallel, incommensurable (e.g., humanities).</li>
+                        </ul>
+                        <p>Bernstein is the key theorist, with Maton, Young & Muller expanding the framework.</p>
+                        <blockquote class="card__quote">
+                            <i class="fas fa-quote-left" aria-hidden="true"></i> Understanding these structures helps illuminate how knowledge is organized, transmitted, and accessed in education.
+                        </blockquote>
+                        <div class="card__meta">
+                            <span class="tag">Summary</span>
+                            <span class="tag">Key Points</span>
+                            <span class="tag">Bernstein</span>
+                        </div>
+                    </div>
+                    <footer class="card__footer">
+                        A concise summary of the core ideas and their significance.
+                    </footer>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Dr Oscar Eybers</p>
+                <a href="#" id="topLink" style="display: inline-block; margin-top: 10px; color: var(--digital-purple); text-decoration: none;">
+                    <i class="fas fa-arrow-up" aria-hidden="true"></i> Top
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backButton = document.getElementById('backButton');
+            if (backButton) {
+                backButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const currentState = {
+                        url: window.location.href,
+                        scrollY: window.scrollY
+                    };
+                    history.replaceState(currentState, document.title);
+                    if (history.length > 1) {
+                        history.back();
+                    } else {
+                        window.location.href = '/';
+                    }
+                });
+            }
+
+            const topLink = document.getElementById('topLink');
+            if (topLink) {
+                topLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            window.addEventListener('beforeunload', function() {
+                const currentState = {
+                    url: window.location.href,
+                    scrollY: window.scrollY
+                };
+                history.replaceState(currentState, document.title);
+            });
+
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted) {
+                    const state = history.state;
+                    if (state && state.scrollY !== undefined) {
+                        window.scrollTo(0, state.scrollY);
+                    }
+                }
+            });
+
+            if (performance.navigation.type === PerformanceNavigation.TYPE_BACK_FORWARD) {
+                const state = history.state;
+                if (state && state.scrollY !== undefined) {
+                    window.scrollTo(0, state.scrollY);
+                }
+            }
+
+            window.addEventListener('orientationchange', function() {
+                setTimeout(function() {
+                    window.location.reload();
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
