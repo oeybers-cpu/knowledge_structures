@@ -1,3 +1,6 @@
+Here is the complete web page code with the requested CSS animation embedded in the top right card (Horizontal Knowledge Structures):
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,8 +38,8 @@
             --sun-glow: #FFA000;
             --sun-ray-color: #FFD700;
             /* Header heights for scroll margin */
-            --top-header-height: 70px;
-            --top-header-height-sm: 90px;
+            --top-header-height: 70px; /* Approximate height on larger screens */
+            --top-header-height-sm: 90px; /* Approximate height on small screens */
         }
         body {
             background: linear-gradient(135deg, var(--darker), var(--dark));
@@ -84,7 +87,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px 20px;
+            padding: 15px 20px; /* Adjusted padding */
             background: rgba(10, 10, 20, 0.8);
             border-bottom: 1px solid rgba(207, 64, 255, 0.3);
             z-index: 1000;
@@ -110,7 +113,7 @@
             0% { text-shadow: 0 0 9px rgba(207, 64, 255, 0.6); }
             100% { text-shadow: 0 0 16px rgba(207, 64, 255, 0.8), 0 0 24px rgba(207, 64, 255, 0.6); }
         }
-        /* Navigation container with Back and Home buttons */
+        /* Navigation container for buttons */
         .nav-container {
             position: fixed;
             top: 25px;
@@ -143,49 +146,11 @@
             color: var(--light);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
-        /* NEW: Additional link in left margin */
-        .additional-link {
-            position: fixed;
-            top: 80px; /* Positioned below nav buttons */
-            left: 25px;
-            z-index: 1001;
-            background: rgba(20, 20, 30, 0.7);
-            border: 1px solid var(--digital-purple);
-            color: var(--digital-purple);
-            padding: 10px 15px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 15px rgba(207, 64, 255, 0.3);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            max-width: 200px; /* Prevent overflow */
-            text-align: left;
-        }
-        .additional-link:hover {
-            background: rgba(207, 64, 255, 0.2);
-            transform: translateX(-5px);
-            box-shadow: 0 0 20px rgba(207, 64, 255, 0.5);
-            color: var(--light);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        .additional-link i {
-            flex-shrink: 0; /* Prevent icon from shrinking */
-        }
-        .additional-link span {
-            flex-grow: 1; /* Allow text to wrap */
-            word-break: break-word;
-        }
         /* Main container */
         .main-container {
             width: 100%;
             max-width: 1400px;
-            margin: 100px auto 0;
+            margin: 100px auto 0; /* Default margin for larger screens */
         }
         /* Header with Sun Integration */
         header {
@@ -245,7 +210,7 @@
             position: relative;
             z-index: 2;
             box-shadow: 0 0 30px 12px var(--sun-glow);
-            animation: sun-pulse 8s infinite ease-in-out;
+            animation: sun-rise-set 20s infinite ease-in-out;
         }
         .sun-rays {
             position: absolute;
@@ -261,10 +226,15 @@
             animation: ray-rotate 20s infinite linear, ray-pulse 4s infinite ease-in-out;
             box-shadow: 0 0 20px 6px var(--sun-ray-color);
         }
-        @keyframes sun-pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        /* Updated sun animation: rise, pause at top, set, pause at bottom */
+        @keyframes sun-rise-set {
+            0% { transform: translate(-50%, 50%) scale(0.8); opacity: 0.7; }
+            10% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            40% { transform: translate(-50%, -50%) scale(1); opacity: 1; } /* Pause at top */
+            50% { transform: translate(-50%, 50%) scale(1); opacity: 1; }
+            60% { transform: translate(-50%, 50%) scale(1); opacity: 1; } /* Pause at bottom */
+            70% { transform: translate(-50%, 50%) scale(0.8); opacity: 0.7; }
+            100% { transform: translate(-50%, 50%) scale(0.8); opacity: 0.7; }
         }
         @keyframes ray-rotate {
             0% { transform: translate(-50%, -50%) rotate(0deg); }
@@ -309,6 +279,7 @@
             transform-origin: left;
             transition: transform 0.5s ease;
             z-index: 1;
+            border-radius: 11.25px 11.25px 0 0;
         }
         .contact-card:hover {
             transform: translateY(-5px);
@@ -365,6 +336,7 @@
             transform-origin: left;
             transition: transform 0.5s ease;
             z-index: 1;
+            border-radius: 12px 12px 0 0;
         }
         .card:hover {
             transform: translateY(-5px);
@@ -384,6 +356,11 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            transition: text-shadow 0.3s ease; /* Add transition for glow effect */
+        }
+        /* Glow effect on hover for headings */
+        .card__title:hover {
+            text-shadow: 0 0 8px var(--digital-purple), 0 0 16px rgba(207, 64, 255, 0.5);
         }
         /* Card Body */
         .card__body {
@@ -396,7 +373,7 @@
             width: 100%;
             height: 220px;
             object-fit: cover;
-            object-position: center 30%;
+            object-position: center;
             border-radius: 8px;
             margin-bottom: 15px;
             border: 2px solid rgba(207, 64, 255, 0.3);
@@ -461,6 +438,11 @@
             border-bottom: 1px solid rgba(207, 64, 255, 0.3);
             font-family: 'Orbitron', sans-serif;
             text-align: center;
+            transition: text-shadow 0.3s ease; /* Add transition for glow effect */
+        }
+        /* Glow effect on hover for section titles */
+        .section-title:hover {
+            text-shadow: 0 0 8px var(--digital-purple), 0 0 16px rgba(207, 64, 255, 0.5);
         }
         .copyright {
             text-align: center;
@@ -471,56 +453,142 @@
             margin-top: 40px;
         }
         .centered-card {
-            grid-column: 1 / -1;
             display: flex;
             justify-content: center;
+            margin-top: 20px;
         }
         .centered-card > .card {
             max-width: 700px;
             width: 100%;
         }
-        /* Ladder Animation Container */
+        /* Ladder Animation Styles */
         .ladder-container {
-            width: 100%;
-            height: 200px;
+            transform-style: preserve-3d;
+        }
+        .ladder-container::before,
+        .ladder-container::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 100%;
+            background-color: #888;
+            top: 0;
+            border-radius: 3px;
+        }
+        .ladder-container::before {
+            left: 0;
+        }
+        .ladder-container::after {
+            right: 0;
+        }
+        .ladder-rungs {
+            position: absolute;
+            top: -15vh;
+            left: 8px;
+            width: 44px;
+            height: 8px;
+            background: transparent;
+            animation: climb 1.5s linear infinite;
+            box-shadow:
+                0 0 0 4px #ccc,
+                0 15vh 0 4px #ccc,
+                0 30vh 0 4px #ccc,
+                0 45vh 0 4px #ccc,
+                0 60vh 0 4px #ccc,
+                0 75vh 0 4px #ccc;
+        }
+        @keyframes climb {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(15vh);
+            }
+        }
+        
+        /* Horizon Animation Styles (New CSS) */
+        .horizon-container {
             position: relative;
-            margin: 20px 0;
+            width: 100%;
+            height: 220px; /* Match card image height */
             overflow: hidden;
             border-radius: 8px;
-            background: rgba(10, 10, 20, 0.5);
-            border: 1px solid rgba(207, 64, 255, 0.2);
+            margin-bottom: 15px;
+            border: 2px solid rgba(207, 64, 255, 0.3);
         }
-        /* Ladder Steps */
-        .ladder-step {
+
+        .sky {
             position: absolute;
-            width: 80%;
-            height: 15px;
-            background: linear-gradient(90deg, var(--royal-blue), var(--digital-purple));
-            left: 10%;
-            border-radius: 4px;
-            box-shadow: 0 0 8px rgba(207, 64, 255, 0.5);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to bottom, #F0F8FF, #ADD8E6); /* A morning sky gradient */
+            z-index: 0; /* Behind the sun and ground */
         }
-        /* Animated Element */
-        .ladder-climber {
+
+        .ground {
             position: absolute;
-            width: 30px;
-            height: 30px;
-            background: var(--sun-color);
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 50%;
+            background-color: #556B2F; /* Dark Olive Green for the ground */
+            z-index: 2; /* On top of the sun and sky */
+            animation: move-horizon 10s linear infinite;
+        }
+
+        .sun {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #FFD700, #FF8C00); /* Gold to Dark Orange gradient */
             border-radius: 50%;
-            top: 170px;
-            left: 45%;
-            box-shadow: 0 0 10px var(--sun-glow);
-            animation: climbLadder 4s infinite ease-in-out;
-            z-index: 2;
+            z-index: 1; /* In front of the sky, behind the ground */
+            transform: translate(-50%, 100%);
+            animation: rise-sun 20s linear infinite;
         }
-        @keyframes climbLadder {
-            0% { top: 170px; }
-            100% { top: 20px; }
+
+        @keyframes move-horizon {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
+
+        @keyframes rise-sun {
+            0% {
+                transform: translate(-50%, 100%); /* Start below the horizon */
+            }
+            50% {
+                transform: translate(-50%, 0); /* Rise to the horizon line */
+            }
+            100% {
+                transform: translate(-50%, 100%); /* Descend back down */
+            }
+        }
+        
+        .horizon-caption {
+            position: absolute;
+            top: 5px; /* Position at the top */
+            width: 100%;
+            text-align: center;
+            color: #333;
+            font-size: 0.75rem;
+            padding: 2px 5px; /* Add padding */
+            box-sizing: border-box;
+            background-color: rgba(240, 248, 255, 0.7); /* Semi-transparent AliceBlue */
+            z-index: 3; /* Ensure caption is above everything */
+        }
+        
         /* Responsive Design Improvements */
         @media (max-width: 1200px) {
-            .articles-container {
-                grid-template-columns: repeat(2, 1fr);
+            .top-nav {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
         @media (max-width: 1100px) {
@@ -529,6 +597,9 @@
             }
         }
         @media (max-width: 900px) {
+            .top-nav {
+                grid-template-columns: repeat(2, 1fr);
+            }
             .top-header h1 {
                 font-size: 1.5rem;
             }
@@ -549,9 +620,15 @@
             }
         }
         @media (max-width: 768px) {
-            /* Adjusted dropdown toggle for smaller screens */
+            .top-nav {
+                gap: 12px;
+            }
+            .nav-link {
+                padding: 10px 12px;
+                font-size: 0.8rem;
+            }
             .card__image {
-                 height: 180px;
+                 height: 180px; /* Adjust image height */
             }
         }
         @media (max-width: 600px) {
@@ -560,18 +637,10 @@
             }
             /* FIXED: Increased top value to prevent collision with header */
             .nav-container {
-                top: 65px;
+                top: 65px; /* Adjusted top position */
                 left: 15px;
                 flex-direction: column;
                 gap: 8px;
-            }
-            /* Position additional link below nav buttons on mobile */
-            .additional-link {
-                top: 140px; /* Adjusted position */
-                left: 15px;
-                padding: 8px 12px;
-                font-size: 0.75rem;
-                max-width: 150px;
             }
             .nav-button {
                 padding: 8px 15px;
@@ -603,8 +672,17 @@
             .top-header h1 {
                 font-size: 1.3rem;
                 max-width: 100%;
+                /* Removed padding and margin-top for simpler, more predictable layout */
             }
-             /* Adjusted dropdown toggle for very small screens */
+            .top-nav {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 0 10px;
+            }
+            .nav-link {
+                padding: 12px 10px;
+                font-size: 0.85rem;
+            }
             .contact-card {
                 padding: 15px;
                 margin: 15px auto;
@@ -620,11 +698,11 @@
             }
             /* Adjust main container margin for fixed header height on small screens */
             .main-container {
-                margin: calc(var(--top-header-height-sm) + 20px) auto 0;
+                margin: calc(var(--top-header-height-sm) + 20px) auto 0; /* Adjusted margin */
             }
             /* Adjust scroll margin for fixed header height on small screens */
             .content-section {
-                scroll-margin-top: calc(var(--top-header-height-sm) + 15px);
+                scroll-margin-top: calc(var(--top-header-height-sm) + 15px); /* Adjusted scroll margin */
             }
         }
     </style>
@@ -644,14 +722,6 @@
             <i class="fas fa-home" aria-hidden="true"></i> Home
         </a>
     </div>
-    <!-- NEW: Additional link in left margin -->
-    <a href="https://www.tandfonline.com/doi/abs/10.1080/09500780108666807?casa_token=Mmaoqp6JlfMAAAAA:6fSrpeKMboQUx15LwMVoBVQCdmS9NRmMPrJnse1y9rXX4m74WQGCpnBmhHjJjR58-tSyAdE6m58O" 
-       class="additional-link" 
-       target="_blank" 
-       rel="noopener noreferrer">
-        <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-        <span>On Literacy and the Social Organisation of Knowledge</span>
-    </a>
     <div class="main-container">
         <div class="container">
             <header>
@@ -674,21 +744,21 @@
                     <div class="card">
                         <div class="card__header">
                             <h2 class="card__title">
-                                <i class="fas fa-arrow-up" aria-hidden="true"></i> Vertical Knowledge Structures
+                                <i class="fas fa-layer-group" aria-hidden="true"></i> Vertical Knowledge Structures
                             </h2>
                         </div>
                         <div class="card__body">
-                            <!-- Ladder Animation Container -->
-                            <div class="ladder-container">
-                                <div class="ladder-step" style="top: 20px;"></div>
-                                <div class="ladder-step" style="top: 50px;"></div>
-                                <div class="ladder-step" style="top: 80px;"></div>
-                                <div class="ladder-step" style="top: 110px;"></div>
-                                <div class="ladder-step" style="top: 140px;"></div>
-                                <div class="ladder-step" style="top: 170px;"></div>
-                                <div class="ladder-climber"></div>
+                            <!-- Ladder Animation in Top Left Card -->
+                            <div style="position: relative; width: 100%; height: 220px; background-color: #000; border-radius: 8px; margin-bottom: 15px; border: 2px solid rgba(207, 64, 255, 0.3); overflow: hidden;">
+                                <div class="ladder-container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 180px;">
+                                    <div class="ladder-rungs"></div>
+                                </div>
+                                <div style="position: absolute; top: 5px; width: 100%; text-align: center; color: #ddd; font-size: 0.75rem; padding: 2px 5px; box-sizing: border-box; background-color: #000; z-index: 3;">
+                                    Ladder representing cumulative, hierarchical knowledge structure.
+                                </div>
                             </div>
-                            <p>Vertical knowledge structures are characterised by strong classification and strong framing. This means there are clear boundaries between knowledge areas (strong classification) and explicit, hierarchical rules for how knowledge is acquired and validated (strong framing). Knowledge is cumulative, building upon itself in a coherent, integrated way.</p>
+                            <!-- End of Ladder Animation -->
+                            <p>Bernstein's concept of vertical knowledge structures describes knowledge organised hierarchically, where concepts build systematically upon previous ones. This creates a cumulative, integrated framework typical in disciplines like physics or mathematics, where foundational principles underpin more complex theories.</p>
                             <p>Applying this to academic literacies, vertical structures correspond to disciplines where writing practices are highly codified and cumulative. Students must master specific genres and conventions that build upon each other. The academic literacies model helps reveal how explicit rules shape the literacy practices students must learn.</p>
                             <blockquote class="card__quote">
                                 <i class="fas fa-quote-left" aria-hidden="true"></i> In vertical structures, knowledge is cumulative, building upon itself in a coherent, integrated way.
@@ -696,44 +766,56 @@
                             <div class="card__meta">
                                 <span class="tag">Hierarchy</span>
                                 <span class="tag">Cumulative</span>
-                                <span class="tag">Explicit Rules</span>
+                                <span class="tag">Integration</span>
+                                <span class="tag">Sciences</span>
                             </div>
                         </div>
                         <footer class="card__footer">
-                            Understanding the sequential, rule-based nature of certain knowledge domains.
+                            Characterised by systematic progression and integration of concepts.
                         </footer>
                     </div>
-                    <!-- Card 2: Horizontal Knowledge (Top Right) -->
+                    <!-- Card 2: Horizontal Knowledge (Top Right) - Includes New Horizon Animation -->
                     <div class="card">
                         <div class="card__header">
                             <h2 class="card__title">
-                                <i class="fas fa-arrows-alt-h" aria-hidden="true"></i> Horizontal Knowledge Structures
+                                <i class="fas fa-th-large" aria-hidden="true"></i> Horizontal Knowledge Structures
                             </h2>
                         </div>
                         <div class="card__body">
-                            <img src="https://github.com/oeybers-cpu/knowledge_structures/blob/main/1757649657.png?raw=true"
-                                 alt="Horizontal knowledge structure showing segmented, context-dependent knowledge areas"
-                                 class="card__image">
-                            <p>Horizontal knowledge structures feature weak classification and weak framing. Boundaries between knowledge areas are less defined (weak classification), and rules for acquiring and validating knowledge are more context-dependent and implicit (weak framing). Knowledge areas exist side-by-side, often incommensurable with each other.</p>
+                            <!-- New Horizon Animation with Sun in Top Right Card -->
+                            <div class="horizon-container">
+                                <div class="sky"></div>
+                                <div class="sun"></div>
+                                <div class="ground"></div>
+                                <div class="horizon-caption">Horizon representing diverse, segmented knowledge structure.</div>
+                            </div>
+                            <!-- End of New Horizon Animation -->
+                            <p>Bernstein's horizontal knowledge structures are segmented, consisting of distinct, often unrelated approaches or languages within a field. These lack a single integrating framework, leading to weaker classification and framing. This is typical in fields like the humanities.</p>
                             <p>The academic literacies model is particularly valuable for understanding horizontal structures. It highlights how students must navigate diverse, often competing genres and discourses within these fields. The model emphasises the situated nature of literacy practices, where meaning, identity, and power are negotiated differently in each segment.</p>
                             <blockquote class="card__quote">
                                 <i class="fas fa-quote-left" aria-hidden="true"></i> In horizontal structures, knowledge areas exist side-by-side, often incommensurable with each other.
                             </blockquote>
                             <div class="card__meta">
-                                <span class="tag">Segmented</span>
-                                <span class="tag">Context-Dependent</span>
-                                <span class="tag">Negotiated Rules</span>
+                                <span class="tag">Segmentation</span>
+                                <span class="tag">Parallel</span>
+                                <span class="tag">Incommensurable</span>
+                                <span class="tag">Humanities</span>
                             </div>
                         </div>
                         <footer class="card__footer">
-                            Exploring the contextual and negotiated nature of knowledge in interdisciplinary fields.
+                            Characterised by distinct, parallel, and often unrelated knowledge areas.
                         </footer>
                     </div>
-                    <!-- Card 3: Integration of Models (Bottom Left) -->
+                </div>
+            </div>
+            <div class="content-section">
+                <h2 class="section-title">Application & Practice</h2>
+                <div class="articles-container">
+                    <!-- Card 3: Genre and Mode Switching -->
                     <div class="card">
                         <div class="card__header">
                             <h2 class="card__title">
-                                <i class="fas fa-project-diagram" aria-hidden="true"></i> Connecting the Frameworks
+                                <i class="fas fa-exchange-alt" aria-hidden="true"></i> Navigating Genres and Modes
                             </h2>
                         </div>
                         <div class="card__body">
@@ -741,33 +823,34 @@
                                  alt="Illustration showing the relationship between Bernstein's Knowledge Structures and Lea & Street's Academic Literacies Model"
                                  class="card__image">
                             <p>Bernstein's framework helps us understand the complexity of student experience in navigating academic literacies. The requirement to switch between genres and modes reflects the underlying structure of the knowledge domain.</p>
-                            <p>In vertical structures, genre shifts often follow predictable, hierarchical patterns. In horizontal structures, they require constant negotiation and adaptation. The academic literacies model emphasises that these shifts are not merely technical. Each genre and mode embodies different social meanings, identities, and power relations. Students must learn not just the forms, but the social practices embedded within them.</p>
+                            <p>The academic literacies model emphasises that these shifts are not merely technical. Each genre and mode embodies different social meanings, identities, and power relations. Students must learn not just the forms, but the social practices embedded within them.</p>
                             <blockquote class="card__quote">
                                 <i class="fas fa-quote-left" aria-hidden="true"></i> Students must develop awareness of the different qualities associated with various genres and modes as they move between communication contexts in academic work.
                             </blockquote>
                             <div class="card__meta">
                                 <span class="tag">Genre</span>
                                 <span class="tag">Mode</span>
-                                <span class="tag">Social Practice</span>
+                                <span class="tag">Transformation</span>
+                                <span class="tag">Multimodality</span>
                             </div>
                         </div>
                         <footer class="card__footer">
-                            Understanding how knowledge organisation influences literacy demands.
+                            Recognising the complex shifts students make between academic communication forms.
                         </footer>
                     </div>
-                    <!-- Card 4: Pedagogical Implications (Bottom Right) -->
+                    <!-- Card 4: Pedagogy & Design Frame -->
                     <div class="card">
                         <div class="card__header">
                             <h2 class="card__title">
-                                <i class="fas fa-graduation-cap" aria-hidden="true"></i> Pedagogical Applications
+                                <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i> Pedagogy & Design Frame
                             </h2>
                         </div>
                         <div class="card__body">
-                            <img src="https://github.com/oeybers-cpu/knowledge_structures/blob/main/1757649741.png?raw=true"
-                                 alt="Illustration of different academic genres"
+                            <img src="https://github.com/oeybers-cpu/knowledge_structures/blob/main/genres4.png?raw=true" 
+                                 alt="Illustration of different academic genres" 
                                  class="card__image">
                             <p>Bernstein's concepts are crucial for curriculum design and pedagogy. Recognising whether a subject area is predominantly vertical or horizontal helps educators anticipate the literacy challenges students will face.</p>
-                            <p>Lea and Street's academic literacies model operationalises this by advocating for a 'design frame' that makes the social and epistemological nature of academic tasks explicit. This moves beyond deficit models to a more nuanced understanding of student learning. Rather than viewing students as lacking skills, educators can see them as navigating complex, socially situated literacy practices.</p>
+                            <p>Lea and Street's academic literacies model operationalises this by advocating for a 'design frame' that makes the social and epistemological nature of academic tasks explicit. This moves beyond deficit models to a more nuanced understanding of student learning.</p>
                             <blockquote class="card__quote">
                                 <i class="fas fa-quote-left" aria-hidden="true"></i> Treating such students as collaborators in the development of the academic literacies necessary... can perhaps offer a different and more supportive route.
                             </blockquote>
@@ -784,35 +867,62 @@
                     </div>
                 </div>
             </div>
+            <!-- Centered final card - Now "Multimodal Communication" -->
+            <div class="centered-card">
+                <div class="card">
+                    <div class="card__header">
+                        <h2 class="card__title">
+                            <i class="fas fa-project-diagram" aria-hidden="true"></i> Multimodal Meaning-Making
+                        </h2>
+                    </div>
+                    <div class="card__body">
+                        <img src="https://github.com/oeybers-cpu/knowledge_structures/blob/main/multimodal.png?raw=true"
+                             alt="Multimodal communication showing integration of different semiotic resources"
+                             class="card__image">
+                        <p>In academic settings, meaning is rarely constructed through language alone. The academic literacies model recognises that students engage with and produce texts that combine linguistic, visual, gestural, and spatial elements.</p>
+                        <p>For instance, a student might use a combination of words, graphs, charts, images, and diagrams in a research report. Understanding the interplay between these different modes is essential for effective academic communication.</p>
+                        <blockquote class="card__quote">
+                            <i class="fas fa-quote-left" aria-hidden="true"></i> Academic literacy is enriched when we recognise and value diverse knowledge traditions and communication practices across cultural contexts.
+                        </blockquote>
+                        <div class="card__meta">
+                            <span class="tag">Multimodality</span>
+                            <span class="tag">Visual</span>
+                            <span class="tag">Gestural</span>
+                            <span class="tag">Representation</span>
+                        </div>
+                    </div>
+                    <footer class="card__footer">
+                        Understanding the role of different modes in constructing academic meaning.
+                    </footer>
+                </div>
+            </div>
             <div class="copyright">
                 <p>&copy; 2025 Dr Oscar Eybers</p>
+                <a href="#" id="topLink" style="display: inline-block; margin-top: 10px; color: var(--digital-purple); text-decoration: none;">
+                    <i class="fas fa-arrow-up" aria-hidden="true"></i> Top
+                </a>
             </div>
         </div>
     </div>
     <script>
-        // Ensure DOM is fully loaded before attaching event handlers
         document.addEventListener('DOMContentLoaded', function() {
-            // Back button functionality - IMPROVED
             const backButton = document.getElementById('backButton');
             if (backButton) {
                 backButton.addEventListener('click', function(e) {
                     e.preventDefault();
-                    // Store current state with scroll position before navigating
-                    const currentState = {
-                        url: window.location.href,
-                        scrollY: window.scrollY
-                    };
-                    history.replaceState(currentState, document.title);
-                    // Go back in history
-                    if (history.length > 1) {
-                        history.back();
-                    } else {
-                        // Fallback if no history
-                        window.location.href = '/';
-                    }
+                    window.history.back();
                 });
             }
-            // Store scroll position when navigating away
+            const topLink = document.getElementById('topLink');
+            if (topLink) {
+                topLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
             window.addEventListener('beforeunload', function() {
                 const currentState = {
                     url: window.location.href,
@@ -820,7 +930,6 @@
                 };
                 history.replaceState(currentState, document.title);
             });
-            // Restore scroll position when returning to page
             window.addEventListener('pageshow', function(event) {
                 if (event.persisted) {
                     const state = history.state;
@@ -829,14 +938,12 @@
                     }
                 }
             });
-            // Handle direct navigation to this page
             if (performance.navigation.type === PerformanceNavigation.TYPE_BACK_FORWARD) {
                 const state = history.state;
                 if (state && state.scrollY !== undefined) {
                     window.scrollTo(0, state.scrollY);
                 }
             }
-            // Handle orientation changes
             window.addEventListener('orientationchange', function() {
                 setTimeout(function() {
                     window.location.reload();
@@ -846,3 +953,4 @@
     </script>
 </body>
 </html>
+```
