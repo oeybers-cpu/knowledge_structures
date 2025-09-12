@@ -110,11 +110,16 @@
             0% { text-shadow: 0 0 9px rgba(207, 64, 255, 0.6); }
             100% { text-shadow: 0 0 16px rgba(207, 64, 255, 0.8), 0 0 24px rgba(207, 64, 255, 0.6); }
         }
-        .back-button-tab {
+        /* Navigation container for buttons */
+        .nav-container {
             position: fixed;
             top: 25px;
             left: 25px;
+            display: flex;
+            gap: 10px;
             z-index: 1001;
+        }
+        .nav-button {
             background: rgba(20, 20, 30, 0.7);
             border: 1px solid var(--royal-blue);
             color: var(--royal-blue);
@@ -131,7 +136,7 @@
             font-size: 0.9rem;
             font-weight: 600;
         }
-        .back-button-tab:hover {
+        .nav-button:hover {
             background: rgba(65, 105, 225, 0.2);
             transform: translateX(-5px);
             box-shadow: 0 0 20px rgba(65, 105, 225, 0.5);
@@ -772,12 +777,15 @@
                 padding: 15px;
             }
             /* FIXED: Increased top value to prevent collision with header */
-            .back-button-tab {
+            .nav-container {
                 top: 65px; /* Adjusted top position */
                 left: 15px;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .nav-button {
                 padding: 8px 15px;
                 font-size: 0.8rem;
-                z-index: 1002;
             }
             /* Adjust sun for mobile */
             .sun-container {
@@ -846,9 +854,17 @@
     <div class="top-header">
         <h1>Bernstein & Academic Literacies</h1>
     </div>
-    <a href="#" class="back-button-tab" id="backButton">
-        <i class="fas fa-arrow-left" aria-hidden="true"></i> Back
-    </a>
+    
+    <!-- Navigation container with Back and Home buttons -->
+    <div class="nav-container">
+        <a href="#" class="nav-button" id="backButton">
+            <i class="fas fa-arrow-left" aria-hidden="true"></i> Back
+        </a>
+        <a href="https://oeybers-cpu.github.io/a_lit_models/" class="nav-button">
+            <i class="fas fa-home" aria-hidden="true"></i> Home
+        </a>
+    </div>
+    
     <div class="main-container">
         <div class="container">
             <header>
@@ -1005,7 +1021,7 @@
                         </h2>
                     </div>
                     <div class="card__body">
-                        <img src="https://github.com/oeybers-cpu/knowledge_structures/blob/main/multimodal.png?raw=true"
+                        <img src="https://github.com/oeybers-cpu/multimodal_grammar/blob/main/digital_communication_africa.png?raw=true"
                              alt="Multimodal communication showing integration of different semiotic resources"
                              class="card__image">
                         <p>In academic settings, meaning is rarely constructed through language alone. The academic literacies model recognises that students engage with and produce texts that combine linguistic, visual, gestural, and spatial elements.</p>
