@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -502,86 +503,230 @@
                 transform: translateY(15vh);
             }
         }
-        
-        /* Horizon Animation Styles (New CSS) */
-        .horizon-container {
+        /* Sunrise Animation Styles (Updated with more stars, sun rise/set, and stars emerging from sun) */
+        .sunrise-scene {
             position: relative;
             width: 100%;
             height: 220px; /* Match card image height */
             overflow: hidden;
+            background: linear-gradient(to top, #1a0033, #000); /* Deeper space background */
             border-radius: 8px;
             margin-bottom: 15px;
             border: 2px solid rgba(207, 64, 255, 0.3);
         }
-
-        .sky {
+        .sunrise-horizon {
+            position: absolute;
+            /* Elevate the horizon slightly */
+            bottom: 10px; /* Changed from 0px to 10px */
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+            box-shadow: 0 0 15px 5px #fff;
+            z-index: 1; /* Ensure horizon is above the sun and stars */
+        }
+        .sunrise-sun {
+            position: absolute;
+            bottom: -50px; /* Start below the horizon */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px; /* Adjusted size */
+            height: 60px; /* Adjusted size */
+            background: linear-gradient(to bottom, #ffd700, #ff8c00);
+            border-radius: 50%;
+            /* Updated animation to rise and set */
+            animation: sun-rise-set-card 20s infinite ease-in-out;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+            z-index: 2; /* Sun above stars */
+        }
+        /* Stars container */
+        .stars-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 50%;
-            background: linear-gradient(to bottom, #F0F8FF, #ADD8E6); /* A morning sky gradient */
-            z-index: 0; /* Behind the sun and ground */
+            height: 100%;
+            /* Updated animation to rise and set with the sun */
+            animation: sun-rise-set-card 20s infinite ease-in-out;
+            z-index: 0; /* Stars below the sun and horizon */
         }
-
-        .ground {
+        /* Individual stars - using box-shadow for multiple stars */
+        .star {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 200%;
-            height: 50%;
-            background-color: #556B2F; /* Dark Olive Green for the ground */
-            z-index: 2; /* On top of the sun and sky */
-            animation: move-horizon 10s linear infinite;
-        }
-
-        .sun {
-            position: absolute;
-            bottom: 50%;
-            left: 50%;
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle, #FFD700, #FF8C00); /* Gold to Dark Orange gradient */
+            width: 2px;
+            height: 2px;
+            background-color: #ffffff; /* Base star color */
             border-radius: 50%;
-            z-index: 1; /* In front of the sky, behind the ground */
-            transform: translate(-50%, 100%);
-            animation: rise-sun 20s linear infinite;
+            /* Place stars along the path of the rising sun and to the sides */
+            /* Increased number of stars by ~1000% using multiple box-shadow layers */
+            /* Added more stars to the right side */
+            box-shadow:
+                /* Original layer */
+                -20px 10px 0 0px #ffffff,
+                -40px 20px 0 0px #cccccc,
+                -60px 30px 0 0px #dddddd,
+                -80px 40px 0 0px #bbbbbb,
+                -100px 50px 0 0px #eeeeee,
+                -120px 60px 0 0px #dddddd,
+                -140px 70px 0 0px #cccccc,
+                -160px 80px 0 0px #ffffff,
+                -180px 90px 0 0px #dddddd,
+                -200px 100px 0 0px #bbbbbb,
+                20px 10px 0 0px #eeeeee,
+                40px 20px 0 0px #cccccc,
+                60px 30px 0 0px #ffffff,
+                80px 40px 0 0px #dddddd,
+                100px 50px 0 0px #bbbbbb,
+                120px 60px 0 0px #eeeeee,
+                140px 70px 0 0px #cccccc,
+                160px 80px 0 0px #ffffff,
+                180px 90px 0 0px #dddddd,
+                200px 100px 0 0px #bbbbbb,
+                /* New layers to increase star count */
+                -25px 15px 0 0px #aaffaa,
+                -45px 25px 0 0px #8888ff,
+                -65px 35px 0 0px #ff88ff,
+                -85px 45px 0 0px #ffff88,
+                -105px 55px 0 0px #88ffff,
+                -125px 65px 0 0px #ff8888,
+                -145px 75px 0 0px #aaffaa,
+                -165px 85px 0 0px #8888ff,
+                -185px 95px 0 0px #ff88ff,
+                -205px 105px 0 0px #ffff88,
+                25px 15px 0 0px #88ffff,
+                45px 25px 0 0px #ff8888,
+                65px 35px 0 0px #aaffaa,
+                85px 45px 0 0px #8888ff,
+                105px 55px 0 0px #ff88ff,
+                125px 65px 0 0px #ffff88,
+                145px 75px 0 0px #88ffff,
+                165px 85px 0 0px #ff8888,
+                185px 95px 0 0px #aaffaa,
+                205px 105px 0 0px #8888ff,
+                -30px 20px 0 0px #ff88ff,
+                -50px 30px 0 0px #ffff88,
+                -70px 40px 0 0px #88ffff,
+                -90px 50px 0 0px #ff8888,
+                -110px 60px 0 0px #aaffaa,
+                -130px 70px 0 0px #8888ff,
+                -150px 80px 0 0px #ff88ff,
+                -170px 90px 0 0px #ffff88,
+                -190px 100px 0 0px #88ffff,
+                -210px 110px 0 0px #ff8888,
+                30px 20px 0 0px #aaffaa,
+                50px 30px 0 0px #8888ff,
+                70px 40px 0 0px #ff88ff,
+                90px 50px 0 0px #ffff88,
+                110px 60px 0 0px #88ffff,
+                130px 70px 0 0px #ff8888,
+                150px 80px 0 0px #aaffaa,
+                170px 90px 0 0px #8888ff,
+                190px 100px 0 0px #ff88ff,
+                210px 110px 0 0px #ffff88,
+                /* Even more stars */
+                -15px 5px 0 0px #ffffff,
+                -35px 15px 0 0px #cccccc,
+                -55px 25px 0 0px #dddddd,
+                -75px 35px 0 0px #bbbbbb,
+                -95px 45px 0 0px #eeeeee,
+                -115px 55px 0 0px #dddddd,
+                -135px 65px 0 0px #cccccc,
+                -155px 75px 0 0px #ffffff,
+                -175px 85px 0 0px #dddddd,
+                -195px 95px 0 0px #bbbbbb,
+                15px 5px 0 0px #eeeeee,
+                35px 15px 0 0px #cccccc,
+                55px 25px 0 0px #ffffff,
+                75px 35px 0 0px #dddddd,
+                95px 45px 0 0px #bbbbbb,
+                115px 55px 0 0px #eeeeee,
+                135px 65px 0 0px #cccccc,
+                155px 75px 0 0px #ffffff,
+                175px 85px 0 0px #dddddd,
+                195px 95px 0 0px #bbbbbb,
+                /* Additional stars for the right side */
+                220px 5px 0 0px #ffffff,
+                240px 15px 0 0px #cccccc,
+                260px 25px 0 0px #dddddd,
+                280px 35px 0 0px #bbbbbb,
+                300px 45px 0 0px #eeeeee,
+                320px 55px 0 0px #dddddd,
+                340px 65px 0 0px #cccccc,
+                360px 75px 0 0px #ffffff,
+                380px 85px 0 0px #dddddd,
+                400px 95px 0 0px #bbbbbb,
+                225px 20px 0 0px #aaffaa,
+                245px 30px 0 0px #8888ff,
+                265px 40px 0 0px #ff88ff,
+                285px 50px 0 0px #ffff88,
+                305px 60px 0 0px #88ffff,
+                325px 70px 0 0px #ff8888,
+                345px 80px 0 0px #aaffaa,
+                365px 90px 0 0px #8888ff,
+                385px 100px 0 0px #ff88ff,
+                405px 110px 0 0px #ffff88,
+                230px 35px 0 0px #88ffff,
+                250px 45px 0 0px #ff8888,
+                270px 55px 0 0px #aaffaa,
+                290px 65px 0 0px #8888ff,
+                310px 75px 0 0px #ff88ff,
+                330px 85px 0 0px #ffff88,
+                350px 95px 0 0px #88ffff,
+                370px 105px 0 0px #ff8888,
+                390px 115px 0 0px #aaffaa,
+                410px 125px 0 0px #8888ff;
+            /* Optional subtle twinkle effect */
+            /* animation: twinkle 3s infinite alternate; */ /* Uncomment to enable twinkling */
         }
-
-        @keyframes move-horizon {
+        /* Updated animation for sun and stars in the card */
+        @keyframes sun-rise-set-card {
             0% {
-                transform: translateX(0);
+                bottom: -50px; /* Start below */
+                transform: translateX(-50%) scale(0.8);
+                opacity: 0.7;
             }
-            100% {
-                transform: translateX(-50%);
+            10% {
+                bottom: 90px; /* Rise to horizon level (adjusted for elevated horizon) */
+                transform: translateX(-50%) scale(1);
+                opacity: 1;
             }
-        }
-
-        @keyframes rise-sun {
-            0% {
-                transform: translate(-50%, 100%); /* Start below the horizon */
+            40% {
+                bottom: 90px; /* Pause at horizon */
+                transform: translateX(-50%) scale(1);
+                opacity: 1;
             }
             50% {
-                transform: translate(-50%, 0); /* Rise to the horizon line */
+                bottom: -50px; /* Set below */
+                transform: translateX(-50%) scale(1);
+                opacity: 1;
+            }
+            60% {
+                bottom: -50px; /* Pause below */
+                transform: translateX(-50%) scale(1);
+                opacity: 1;
+            }
+            70% {
+                bottom: -50px; /* Continue below */
+                transform: translateX(-50%) scale(0.8);
+                opacity: 0.7;
             }
             100% {
-                transform: translate(-50%, 100%); /* Descend back down */
+                bottom: -50px; /* End below */
+                transform: translateX(-50%) scale(0.8);
+                opacity: 0.7;
             }
         }
-        
-        .horizon-caption {
+        .sunrise-caption {
             position: absolute;
             top: 5px; /* Position at the top */
             width: 100%;
             text-align: center;
-            color: #333;
+            color: #ddd;
             font-size: 0.75rem;
             padding: 2px 5px; /* Add padding */
             box-sizing: border-box;
-            background-color: rgba(240, 248, 255, 0.7); /* Semi-transparent AliceBlue */
+            background-color: #000; /* Black background */
             z-index: 3; /* Ensure caption is above everything */
         }
-        
         /* Responsive Design Improvements */
         @media (max-width: 1200px) {
             .top-nav {
@@ -771,7 +916,7 @@
                             Characterised by systematic progression and integration of concepts.
                         </footer>
                     </div>
-                    <!-- Card 2: Horizontal Knowledge (Top Right) - Includes New Horizon Animation -->
+                    <!-- Card 2: Horizontal Knowledge (Top Right) - Includes Updated Sunrise Animation -->
                     <div class="card">
                         <div class="card__header">
                             <h2 class="card__title">
@@ -779,14 +924,16 @@
                             </h2>
                         </div>
                         <div class="card__body">
-                            <!-- New Horizon Animation with Sun in Top Right Card -->
-                            <div class="horizon-container">
-                                <div class="sky"></div>
-                                <div class="sun"></div>
-                                <div class="ground"></div>
-                                <div class="horizon-caption">Horizon representing diverse, segmented knowledge structure.</div>
+                            <!-- Updated Sunrise Animation with Stars in Top Right Card -->
+                            <div class="sunrise-scene">
+                                <div class="stars-container">
+                                    <div class="star"></div>
+                                </div>
+                                <div class="sunrise-sun"></div>
+                                <div class="sunrise-horizon"></div>
+                                <div class="sunrise-caption">Sunrise representing diverse, segmented knowledge structure.</div>
                             </div>
-                            <!-- End of New Horizon Animation -->
+                            <!-- End of Updated Sunrise Animation -->
                             <p>Bernstein's horizontal knowledge structures are segmented, consisting of distinct, often unrelated approaches or languages within a field. These lack a single integrating framework, leading to weaker classification and framing. This is typical in fields like the humanities.</p>
                             <p>The academic literacies model is particularly valuable for understanding horizontal structures. It highlights how students must navigate diverse, often competing genres and discourses within these fields. The model emphasises the situated nature of literacy practices, where meaning, identity, and power are negotiated differently in each segment.</p>
                             <blockquote class="card__quote">
@@ -808,7 +955,7 @@
             <div class="content-section">
                 <h2 class="section-title">Application & Practice</h2>
                 <div class="articles-container">
-                    <!-- Card 3: Genre and Mode Switching -->
+                    <!-- Card 3: Genre and Mode Switching (SWITCHED IMAGE) -->
                     <div class="card">
                         <div class="card__header">
                             <h2 class="card__title">
@@ -816,8 +963,8 @@
                             </h2>
                         </div>
                         <div class="card__body">
-                            <img src="https://github.com/oeybers-cpu/knowledge_structures/blob/main/1757649528.png?raw=true"
-                                 alt="Illustration showing the relationship between Bernstein's Knowledge Structures and Lea & Street's Academic Literacies Model"
+                            <img src="https://github.com/oeybers-cpu/knowledge_structures/blob/main/genres4.png?raw=true" 
+                                 alt="Illustration of different academic genres" 
                                  class="card__image">
                             <p>Bernstein's framework helps us understand the complexity of student experience in navigating academic literacies. The requirement to switch between genres and modes reflects the underlying structure of the knowledge domain.</p>
                             <p>The academic literacies model emphasises that these shifts are not merely technical. Each genre and mode embodies different social meanings, identities, and power relations. Students must learn not just the forms, but the social practices embedded within them.</p>
@@ -835,7 +982,7 @@
                             Recognising the complex shifts students make between academic communication forms.
                         </footer>
                     </div>
-                    <!-- Card 4: Pedagogy & Design Frame -->
+                    <!-- Card 4: Pedagogy & Design Frame (SWITCHED IMAGE) -->
                     <div class="card">
                         <div class="card__header">
                             <h2 class="card__title">
@@ -843,8 +990,8 @@
                             </h2>
                         </div>
                         <div class="card__body">
-                            <img src="https://github.com/oeybers-cpu/knowledge_structures/blob/main/genres4.png?raw=true" 
-                                 alt="Illustration of different academic genres" 
+                            <img src="https://github.com/oeybers-cpu/knowledge_structures/blob/main/1757649528.png?raw=true"
+                                 alt="Illustration showing the relationship between Bernstein's Knowledge Structures and Lea & Street's Academic Literacies Model"
                                  class="card__image">
                             <p>Bernstein's concepts are crucial for curriculum design and pedagogy. Recognising whether a subject area is predominantly vertical or horizontal helps educators anticipate the literacy challenges students will face.</p>
                             <p>Lea and Street's academic literacies model operationalises this by advocating for a 'design frame' that makes the social and epistemological nature of academic tasks explicit. This moves beyond deficit models to a more nuanced understanding of student learning.</p>
@@ -950,3 +1097,4 @@
     </script>
 </body>
 </html>
+```
